@@ -1,12 +1,11 @@
 class Book < ActiveRecord::Base
 	require 'amazon/ecs'
-  #require 'open-uri'
 
   # ---------------------------------------------------
   # relationships
   # ---------------------------------------------------
   has_attached_file :cover,
-                    styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png"            
+                    styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png"
   
   # ---------------------------------------------------
   # callbacks
