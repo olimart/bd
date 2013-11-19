@@ -1,0 +1,27 @@
+<% if @results.present? %>
+  <% @results.items.each do |item| %>
+	  <h3>BOOK</h3>
+	  <% item_attributes = item.get_element('ItemAttributes') %>
+	  <% asin = item.get('ASIN') %>
+	  <% isbn = item_attributes.get('ISBN') %>
+
+	  <li><strong><%= item_attributes.get('Title') %></strong></li>
+	  <li><small>ISBN: <%= item_attributes.get('ISBN') %> || ASIN: <%= asin %></small></li>
+
+	  <li>Author: <%= item_attributes.get_array('Author').to_sentence %></li>
+	  <li>Editor: <%= item_attributes.get('Manufacturer') %></li>
+
+	  <% small_img = item.get_hash('SmallImage') %>
+	  <% medium_img = item.get_hash('MediumImage') %>
+	  <% large_img = item.get_hash('LargeImage') %>
+    <%= image_tag(small_img["URL"]) if small_img %>
+    <%= image_tag(medium_img["URL"]) if medium_img %>
+    <%= image_tag(large_img["URL"]) if large_img %>
+	  
+	  <p><%= link_to "Import", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default' %></p>
+
+	  =======================
+	<% end %>
+<% else %>
+  <p class="alert alert-warning">No books found.</p>
+<% end %>

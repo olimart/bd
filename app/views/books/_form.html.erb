@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+  <%= simple_form_for(@book, remote: true) do |f| %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title"><%= @book.new_record? ? "New Book" : "Edit Book" %></h4>
+    </div>
+    <div class="modal-body">
+      <div id="error-container"></div>
+      <%= f.input :title, input_html: {class: 'form-control'}, autofocus: true %>
+      <%= f.input :serie, input_html: {class: 'form-control'} %>
+      <%= f.input :volume, input_html: {class: 'form-control'} %>
+      <%= f.input :author, input_html: {class: 'form-control'} %>
+      <%= f.input :editor, input_html: {class: 'form-control'} %>
+      <%= f.input :isbn, input_html: {class: 'form-control'} %>
+      <%= f.input :cover unless params[:asin].present? %>
+      <%= f.input :asin, as: :hidden %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+      <%= f.button :submit, class: 'btn btn-success', "data_disable_with"=>"#{t 'saving'}" %>
+    </div>
+  <% end %>
+  </div>
+</div>

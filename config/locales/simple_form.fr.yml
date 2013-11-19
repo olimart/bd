@@ -1,0 +1,40 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'requis'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Veuillez corriger les erreurs suivantes:"
+    # Labels and hints examples
+    labels:
+      defaults:
+        email: Courriel
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        first_name: Prénom
+        last_name: Nom
+        name: Nom
+        phone: Téléphone
+        address1: Adresse 1
+        address2: Adresse 2
+        city: Ville
+        postal_code: Code postal
+        country: Pays
+        localization: Localisation
+        available: Disponible
+      book:
+        isbn: ISBN
+    # user:
+    #   new:
+    #     email: 'E-mail para efetuar o sign in.'
+    #   edit:
+    #     email: 'E-mail.'
+    # hints:
+    #   username: 'User name to sign in.'
+    #   password: 'No special characters, please.'
+

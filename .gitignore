@@ -1,0 +1,20 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/cache
+/public/upload
+/public/system
+.DS_Store
+public/assets/
+.rvmrc
+/config/initializers/stripe.rb
+# Ignore application configuration
+/config/application.yml
+/config/database.yml
+.env

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  serie: MyString
+  title: MyString
+  number: MyString
+  author: MyString
+  edition: MyString
+  read: false
+
+two:
+  serie: MyString
+  title: MyString
+  number: MyString
+  author: MyString
+  edition: MyString
+  read: false

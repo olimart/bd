@@ -1,0 +1,17 @@
+<%= content_tag_for :article, book, class: 'span3' do %>
+  <% if book.cover.present? %>
+    <%= image_tag book.cover.url(:thumb) %>
+  <% else %>
+    <img src="holder.js/160x120">
+  <% end %>
+  
+  <p><%= book.title %></p>
+  <p><%= link_to((book.read? ? 'Unread' : 'Read'), update_reading_status_book_path(book), method: :post, remote: true) %></p>
+  <p><small>ISBN: <%= book.isbn %></small></p>
+
+  <tr>
+    <td><%#= link_to 'Show', book %></td>
+    <td><%#= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%#= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
