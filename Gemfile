@@ -52,6 +52,7 @@ group :development do
   gem 'thin'
   gem 'letter_opener'
   gem 'better_errors'
+  gem 'quiet_assets'
 end
 
 group :production do

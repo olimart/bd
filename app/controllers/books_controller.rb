@@ -36,7 +36,7 @@ class BooksController < ApplicationController
     end 
     
     respond_to do |format|
-      format.html
+      format.html { render layout: false }
       format.js { render layout: false }
     end
   end

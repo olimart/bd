@@ -1,5 +1,5 @@
 # README
-
+https://github.com/olimart/bd
 Bandes dessinées
 
 `rake db:bootstrap`
