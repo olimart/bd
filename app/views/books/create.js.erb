@@ -3,5 +3,4 @@
 <% else %>
   $("#page-modal").modal('hide');
   $("#books").prepend('<%= j render(@book) %>');
-  $(".alert-message").insert("All good");
 <% end %>
