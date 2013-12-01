@@ -1,18 +1,13 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :update_reading_status]
 
-  # GET /books
-  # GET /books.json
   def index
     @books = Book.all
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
   end
 
-  # GET /books/new
   def new
     if params[:asin].present?
       asin = params[:asin]
@@ -36,17 +31,14 @@ class BooksController < ApplicationController
     end 
     
     respond_to do |format|
-      format.html
+      format.html { render layout: false }
       format.js { render layout: false }
     end
   end
 
-  # GET /books/1/edit
   def edit
   end
 
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
 
@@ -61,8 +53,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
       if @book.update(book_params)
@@ -75,8 +65,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
     respond_to do |format|
