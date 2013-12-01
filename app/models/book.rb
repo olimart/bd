@@ -1,26 +1,30 @@
 class Book < ActiveRecord::Base
 	require 'amazon/ecs'
 
-  # ---------------------------------------------------
-  # relationships
-  # ---------------------------------------------------
+  # ASSOCIATIONS
+  # ------------------------------------------------------------------------------------------------------
   has_attached_file :cover,
-                    styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png"
+                    storage: :google_drive,
+                    google_drive_credentials: "#{Rails.root}/config/google_drive.yml",
+                    styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png",
+                    google_drive_options: {
+                      folder_id: ENV['GOOGLE_DRIVE_PUBLIC_FOLDER_ID']
+                    }
   
-  # ---------------------------------------------------
-  # callbacks
-  # ---------------------------------------------------
+
+  # CALLBACKS
+  # ------------------------------------------------------------------------------------------------------
   after_create :import_cover
 
-	# ---------------------------------------------------
-  # validations
-  # ---------------------------------------------------
+
+  # VALIDATIONS
+  # ------------------------------------------------------------------------------------------------------
 	validates_uniqueness_of :isbn, allow_blank: true
   validates_presence_of :title
 
-  # ---------------------------------------------------
-  # instance methods
-  # ---------------------------------------------------
+
+  # INSTANCE METHODS
+  # ------------------------------------------------------------------------------------------------------
   alias_attribute :asin, :isbn
 
   def update_reading_status

@@ -38,7 +38,8 @@ gem 'kaminari-bootstrap'
 gem 'figaro'
 gem 'six'
 gem 'amazon-ecs'
-gem 'paperclip'
+#gem 'paperclip'
+gem 'paperclip-googledrive'
 
 group :development, :test do
   gem 'faker', '1.0.1'

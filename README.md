@@ -2,9 +2,9 @@
 
 Bandes dessinées
 
-`rake db:bootstrap`
+1. Clone and rename `application.yml.sample`
 
-Clone and rename `application.yml.sample`
+2. `rake db:bootstrap`
 
 [AMZN Product Advertising API](http://docs.aws.amazon.com/AWSECommerceService/2011-08-01/DG/CHAP_response_elements.html)
 
