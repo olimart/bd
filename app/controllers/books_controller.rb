@@ -18,7 +18,6 @@ class BooksController < ApplicationController
         @book = Book.new(
           isbn: asin, # For books, the ASIN is the same as the ISBN number
           title: book.get('ItemAttributes/Title'),
-          serie: '',
           volume: '',
           author: book.get('ItemAttributes/Author').present? ? book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
           editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher')
@@ -37,6 +36,10 @@ class BooksController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { render layout: false }
+      format.js { render layout: false }
+    end
   end
 
   def create
@@ -57,10 +60,10 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -93,6 +96,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :serie, :volume, :read, :cover, :author, :editor)
+      params.require(:book).permit(:isbn, :title, :serie_id, :volume, :read, :cover, :author, :editor, :asin, serie_attributes: [:name])
     end
 end

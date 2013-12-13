@@ -1,7 +1,6 @@
 class CreateBooks < ActiveRecord::Migration
   def change
     create_table :books do |t|
-      t.string     :serie
       t.string     :title
       t.string     :volume
       t.string     :author
@@ -9,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration
       t.boolean    :read, default: false
       t.string     :isbn
       t.attachment :cover
+      t.integer    :serie_id
 
       t.timestamps
     end

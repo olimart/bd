@@ -1,14 +1,40 @@
 <div class="modal-dialog">
   <div class="modal-content">
-  <%= simple_form_for(@book, remote: true) do |f| %>
+  <%= simple_nested_form_for(@book, remote: true) do |f| %>
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h4 class="modal-title"><%= @book.new_record? ? "New Book" : "Edit Book" %></h4>
     </div>
     <div class="modal-body">
       <div id="error-container"></div>
-      <%= f.input :title, input_html: {class: 'form-control'}, autofocus: true %>
-      <%= f.input :serie, input_html: {class: 'form-control'} %>
+
+      <% @book.build_serie if @book.serie.blank? %>
+      <% if Serie.any? && @book.new_record? %>
+        <div class="tabbable">
+          <ul class="nav nav-tabs" style="margin-bottom:15px;">
+            <li class="active"><a href="#pane1" data-toggle="tab">Série en cours</a></li>
+            <li><a href="#pane2" data-toggle="tab">Nouvelle série</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="pane1" class="tab-pane active">
+              <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, input_html: {class: 'form-control'}, prompt: "Sélectionnez une Série", label: false %>
+            </div>
+            <div id="pane2" class="tab-pane">
+              <%= f.fields_for :serie do |s| %>
+                <%= s.input :name, label: 'Nom de la série', input_html: {class: 'form-control'} %>
+              <% end %>
+            </div> <!-- /pane2 -->
+          </div> <!-- /tab-content -->
+        </div> <!-- /tabbable -->
+      <% elsif Serie.any? && !@book.new_record? %>
+        <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, input_html: {class: 'form-control'}, prompt: "Sélectionnez une Série", label: 'Série' %>
+      <% else %>
+        <%= f.fields_for :serie do |s| %>
+          <%= s.input :name, label: 'Série', input_html: {class: 'form-control'} %>
+        <% end %>
+      <% end %>
+
+      <%= f.input :title, input_html: {class: 'form-control'}, autofocus: true %>      
       <%= f.input :volume, input_html: {class: 'form-control'} %>
       <%= f.input :author, input_html: {class: 'form-control'} %>
       <%= f.input :editor, input_html: {class: 'form-control'} %>
@@ -18,7 +44,7 @@
     </div>
     <div class="modal-footer">
       <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
-      <%= f.button :submit, class: 'btn btn-success', "data_disable_with"=>"#{t 'saving'}" %>
+      <%= f.button :submit, class: 'btn btn-success', data: {disable_with: "#{t 'saving'}"} %>
     </div>
   <% end %>
   </div>

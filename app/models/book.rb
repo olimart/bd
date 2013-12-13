@@ -3,18 +3,25 @@ class Book < ActiveRecord::Base
 
   # ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
+  belongs_to :serie
+  accepts_nested_attributes_for :serie
+
+
+  # PAPERCLIP
+  # ------------------------------------------------------------------------------------------------------
   has_attached_file :cover,
                     storage: :google_drive,
                     google_drive_credentials: "#{Rails.root}/config/google_drive.yml",
                     styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png",
                     google_drive_options: {
-                      folder_id: ENV['GOOGLE_DRIVE_PUBLIC_FOLDER_ID']
+                      #folder_id: ENV['GOOGLE_DRIVE_PUBLIC_FOLDER_ID']
                     }
   
 
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
-  after_create :import_cover
+  after_create  :import_cover
+  before_save   :clean_serie
 
 
   # VALIDATIONS
@@ -43,6 +50,12 @@ class Book < ActiveRecord::Base
         puts "**** Error while importing cover for ASIN: #{asin} ****"
       end
     end
+  end
+
+  def clean_serie
+    if serie_id.present?
+      self.serie.name = ""
+    end  
   end
 
 end

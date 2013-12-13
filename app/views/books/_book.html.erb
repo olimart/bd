@@ -1,11 +1,12 @@
 <%= content_tag_for :article, book, class: 'span3' do %>
   <% if book.cover.present? %>
-    <%= image_tag book.cover.url(:thumb) %>
+    <%#= image_tag book.cover.url(:thumb) %>
   <% else %>
     <img src="holder.js/160x120">
   <% end %>
   
-  <p><%= book.title %></p>
+  <p><%= link_to book.title, edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %></p>
+  <p><small><%= book.serie.try(:name) %></small></p>
   <p><%= link_to((book.read? ? 'Unread' : 'Read'), update_reading_status_book_path(book), method: :post, remote: true) %></p>
   <p><small>ISBN: <%= book.isbn %></small></p>
 
