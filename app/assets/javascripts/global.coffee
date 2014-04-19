@@ -13,5 +13,11 @@ ready = ->
     $(this).removeData('bs.modal')
     $(this).html(modal_loading)
 
+  $("#import-link").click (e) ->
+    e.preventDefault()
+    $(".global-search").toggle()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
+$(document).bind 'page:change', ->
+  Holder.run()

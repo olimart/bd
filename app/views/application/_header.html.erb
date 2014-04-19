@@ -1,0 +1,8 @@
+<%= page_title("#{t 'site_name'}") do %>
+  <span class="pull-right">
+    <div class="btn-group">
+		  <%= icon_button_link_to 'Ajouter une BD', new_book_path, class: 'btn btn-default', data: {toggle: 'modal', target: '#page-modal'}, icon: 'plus', format: :js %>
+      <%= icon_button_link_to "Importer", "#", id: 'import-link', class: 'btn btn-default', icon: 'save' %>
+		</div>
+  </span>
+<% end %>

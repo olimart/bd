@@ -46,6 +46,7 @@ gem 'six'
 gem 'amazon-ecs'
 #gem 'paperclip'
 gem 'paperclip-googledrive'
+gem 'holder_rails'
 
 group :development, :test do
   gem 'faker', '1.0.1'

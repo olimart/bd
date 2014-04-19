@@ -1,15 +1,17 @@
-<h1>BDVORE</h1>
-<%= link_to 'New Book', new_book_path, class: 'btn btn-primary', data: {toggle: 'modal', target: '#page-modal'}, format: :js %>
-
-<%= form_tag({controller: "books", action: "search_on_amazon"}, method: :post, remote: true) do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q, '', value: 'Thorgal Tome 5', placeholder: 'Thorgal Tome 5, ISBN...') %>
-  <%= submit_tag("Search", data: {disable_with: "Searching..."}) %>
+<%= form_tag({controller: "books", action: "search_on_amazon"}, method: :post, remote: true, class: 'global-search') do %>
+  <div class="row">
+	  <div class="col-xs-7 col-md-10">
+	    <%= text_field_tag(:q, '', value: 'Thorgal Tome 5', placeholder: 'Thorgal Tome 5, ISBN...', class: 'form-control input-lg') %>
+	  </div>
+	  <div class="col-xs-5 col-md-2">
+	    <%= submit_tag("Rechercher", data: {disable_with: "Recherche..."}, class: 'btn btn-default btn-lg btn-block') %>
+	  </div>
+	</div>
 <% end %>
 
 <div id="search-results"></div>
 
-<div class="collection" id="books">
+<div class="row" id="books">
   <% @books.each do |book| %>
     <%= render 'book', book: book %>
   <% end %>

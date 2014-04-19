@@ -16,11 +16,11 @@ class Book < ActiveRecord::Base
                     google_drive_options: {
                       #folder_id: ENV['GOOGLE_DRIVE_PUBLIC_FOLDER_ID']
                     }
-  
+
 
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
-  after_create  :import_cover
+  #after_create  :import_cover
   before_save   :clean_serie
 
 
@@ -33,6 +33,7 @@ class Book < ActiveRecord::Base
   # INSTANCE METHODS
   # ------------------------------------------------------------------------------------------------------
   alias_attribute :asin, :isbn
+  alias_attribute :amazon_id, :isbn
 
   def update_reading_status
   	self.read = !read
@@ -55,7 +56,7 @@ class Book < ActiveRecord::Base
   def clean_serie
     if serie_id.present?
       self.serie.name = ""
-    end  
+    end
   end
 
 end

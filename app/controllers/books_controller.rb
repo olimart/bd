@@ -21,14 +21,14 @@ class BooksController < ApplicationController
           volume: '',
           author: book.get('ItemAttributes/Author').present? ? book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
           editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher')
-        ) || Book.new
+        )
       else
         @book = Book.new
       end
     else
       @book = Book.new
-    end 
-    
+    end
+
     respond_to do |format|
       format.html { render layout: false }
       format.js { render layout: false }
@@ -79,15 +79,16 @@ class BooksController < ApplicationController
   def search_on_amazon
     if params[:q].present?
       @results = Amazon::Ecs.item_search(params[:q], {response_group: 'Medium', sort: 'salesrank', country: 'fr'})
+      puts @results.to_json
     else
       render :index, alert: 'No search criteria'
     end
   end
-  
+
   def update_reading_status
     @book.update_reading_status
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

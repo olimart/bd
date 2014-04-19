@@ -1,27 +1,42 @@
 <% if @results.present? %>
-  <% @results.items.each do |item| %>
-	  <h3>BOOK</h3>
-	  <% item_attributes = item.get_element('ItemAttributes') %>
-	  <% asin = item.get('ASIN') %>
-	  <% isbn = item_attributes.get('ISBN') %>
+  <div class="row">
+	  <% @results.items.each do |item| %>
 
-	  <li><strong><%= item_attributes.get('Title') %></strong></li>
-	  <li><small>ISBN: <%= item_attributes.get('ISBN') %> || ASIN: <%= asin %></small></li>
+	    <% item_attributes = item.get_element('ItemAttributes') %>
+		  <% asin = item.get('ASIN') %>
+		  <% isbn = item_attributes.get('ISBN') %>
+	    <% small_img = item.get_hash('SmallImage') %>
+		  <% medium_img = item.get_hash('MediumImage') %>
+		  <% large_img = item.get_hash('LargeImage') %>
 
-	  <li>Author: <%= item_attributes.get_array('Author').to_sentence %></li>
-	  <li>Editor: <%= item_attributes.get('Manufacturer') %></li>
+	   <div class='col-sm-6 col-md-2'>
+			  <div class="thumbnail">
+			    <% if medium_img %>
+		  	    <%= image_tag(large_img["URL"]) %>
+		  	  <% else %>
+		  	    <img src="http://placehold.it/155x212&text=cover">
+		  	  <% end %>
+			    <div class="caption">
+			      <h4 class='book-title'><%= item_attributes.get('Title').truncate(48) %></h4>
+            <p><%= link_to "Ajouter", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default btn-block' %></p>
+			    </div>
+			  </div>
+			</div>
+		<% end %>
+	</div>
 
-	  <% small_img = item.get_hash('SmallImage') %>
-	  <% medium_img = item.get_hash('MediumImage') %>
-	  <% large_img = item.get_hash('LargeImage') %>
-    <%= image_tag(small_img["URL"]) if small_img %>
-    <%= image_tag(medium_img["URL"]) if medium_img %>
-    <%= image_tag(large_img["URL"]) if large_img %>
-	  
-	  <p><%= link_to "Import", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default' %></p>
+	  <!-- <li><strong><%#= item_attributes.get('Title') %></strong></li>
+	  <li><small>ISBN: <%#= item_attributes.get('ISBN') %> || ASIN: <%#= asin %></small></li>
 
-	  =======================
-	<% end %>
+	  <li>Author: <%#= item_attributes.get_array('Author').to_sentence %></li>
+	  <li>Editor: <%#= item_attributes.get('Manufacturer') %></li> -->
+
+    <%#= image_tag(small_img["URL"]) if small_img %>
+    <%#= image_tag(medium_img["URL"]) if medium_img %>
+    <%#= image_tag(large_img["URL"]) if large_img %>
+
+	  <!-- <p><%#= link_to "Importer", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default' %></p> -->
+
 <% else %>
-  <p class="alert alert-warning">No books found.</p>
+  <p class="alert alert-warning">Aucun livre trouvé.</p>
 <% end %>

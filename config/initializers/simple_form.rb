@@ -5,7 +5,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, class: "input form-group",
+  config.wrappers :default, class: "form-group",
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
@@ -41,8 +41,8 @@ SimpleForm.setup do |config|
 
     ## Inputs
     b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: "help-block" }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :hint,  wrap_with: { tag: :span, class: 'help-block' }
+    b.use :error, wrap_with: { tag: :span, class: 'has-error' }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -89,7 +89,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_tag = :span
 
   # You can define a class to use in all item wrappers. Defaulting to none.
-  config.item_wrapper_class = nil
+  # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
   # config.label_text = lambda { |label, required| "#{required} #{label}" }
@@ -139,4 +139,7 @@ SimpleForm.setup do |config|
 
   # Cache SimpleForm inputs discovery
   # config.cache_discovery = !Rails.env.development?
+
+  # Default class for inputs
+  config.input_class = 'form-control'
 end

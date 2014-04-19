@@ -1,18 +1,23 @@
-<%= content_tag_for :article, book, class: 'span3' do %>
-  <% if book.cover.present? %>
-    <%#= image_tag book.cover.url(:thumb) %>
-  <% else %>
-    <img src="holder.js/160x120">
-  <% end %>
-  
-  <p><%= link_to book.title, edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %></p>
-  <p><small><%= book.serie.try(:name) %></small></p>
-  <p><%= link_to((book.read? ? 'Unread' : 'Read'), update_reading_status_book_path(book), method: :post, remote: true) %></p>
-  <p><small>ISBN: <%= book.isbn %></small></p>
-
-  <tr>
-    <td><%#= link_to 'Show', book %></td>
-    <td><%#= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%#= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= content_tag_for :div, book, class: 'col-sm-6 col-md-2' do %>
+  <div class="thumbnail">
+    <% if book.cover.present? %>
+      <%#= image_tag book.cover.url(:thumb) %>
+    <% else %>
+      <%= coverz(book) %>
+    <% end %>
+    <div class="caption">
+      <h4 class='title'><%= link_to book.title.truncate(48), edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %></h4>
+      <p><small>
+        <%= book.serie.try(:name) || "&nbsp;".html_safe %>
+        <% if book.volume.present? %>
+          <span class="pull-right">#<%= book.volume %></span>
+        <% end %>
+      </small></p>
+      <!-- <p><small>ISBN: <%= book.isbn %></small></p> -->
+      <p class='meta'>
+        <%= link_to(content_tag(:span, '', class: "glyphicon glyphicon-#{book.read? ? 'ok' : 'star-empty'}"), update_reading_status_book_path(book), method: :post, remote: true) %>
+        <%= link_to(content_tag(:span, '', class: "glyphicon glyphicon-#{book.read? ? 'heart' : 'star-empty'}"), update_reading_status_book_path(book), method: :post, remote: true, class: 'pull-right') %>
+      </p>
+    </div>
+  </div>
 <% end %>
