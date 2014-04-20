@@ -1,63 +1,61 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-  <%= simple_nested_form_for(@book, remote: true) do |f| %>
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title"><%= @book.new_record? ? "Nouvelle BD" : "Édition" %></h4>
-    </div>
-    <div class="modal-body">
-      <div id="error-container"></div>
-
-      <% @book.build_serie if @book.serie.blank? %>
-      <% if Serie.any? && @book.new_record? %>
-        <div class="tabbable">
-          <ul class="nav nav-tabs" style="margin-bottom:15px;">
-            <li class="active"><a href="#pane1" data-toggle="tab">Série en cours</a></li>
-            <li><a href="#pane2" data-toggle="tab">Nouvelle série</a></li>
-          </ul>
-          <div class="tab-content">
-            <div id="pane1" class="tab-pane active">
-              <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: "Sélectionnez une Série", label: false %>
-            </div>
-            <div id="pane2" class="tab-pane">
-              <%= f.fields_for :serie do |s| %>
-                <%= s.input :name, label: 'Nom de la série', input_html: {class: 'form-control'} %>
-              <% end %>
-            </div> <!-- /pane2 -->
-          </div> <!-- /tab-content -->
-        </div> <!-- /tabbable -->
-      <% elsif Serie.any? && !@book.new_record? %>
-        <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, input_html: {class: 'form-control'}, prompt: "Sélectionnez une Série", label: 'Série' %>
-      <% else %>
-        <%= f.fields_for :serie do |s| %>
-          <%= s.input :name, label: 'Série' %>
-        <% end %>
-      <% end %>
-
-      <div class="row">
-        <div class="col-sm-6 col-md-10">
-          <%= f.input :title, autofocus: true %>
-        </div>
-        <div class="col-sm-6 col-md-2">
-          <%= f.input :volume %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6">
-          <%= f.input :author %>
-        </div>
-        <div class="col-sm-6 col-md-6">
-          <%= f.input :editor %>
-        </div>
-      </div>
-      <%= f.input :isbn %>
-      <%= f.input :asin, as: :hidden %>
-      <%#= f.input :cover unless params[:asin].present? %>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
-      <%= f.button :submit, class: 'btn btn-success', data: {disable_with: "#{t 'saving'}"} %>
-    </div>
-  <% end %>
+<%= simple_nested_form_for(@book, remote: true) do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><%= @book.new_record? ? "Nouvelle BD" : "Édition" %></h4>
   </div>
-</div>
+  <div class="modal-body">
+    <div id="error-container"></div>
+
+    <% @book.build_serie if @book.serie.blank? %>
+    <% if Serie.any? && @book.new_record? %>
+      <div class="tabbable">
+        <ul class="nav nav-tabs" style="margin-bottom:15px;">
+          <li class="active"><a href="#pane1" data-toggle="tab">Série en cours</a></li>
+          <li><a href="#pane2" data-toggle="tab">Nouvelle série</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="pane1" class="tab-pane active">
+            <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: "Sélectionnez une série", label: false %>
+          </div>
+          <div id="pane2" class="tab-pane">
+            <%= f.fields_for :serie do |s| %>
+              <%= s.input :name %>
+            <% end %>
+          </div> <!-- /pane2 -->
+        </div> <!-- /tab-content -->
+      </div> <!-- /tabbable -->
+    <% elsif Serie.any? && !@book.new_record? %>
+      <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: "Sélectionnez une série", label: 'Série' %>
+    <% else %>
+      <%= f.fields_for :serie do |s| %>
+        <%= s.input :name %>
+      <% end %>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-10">
+        <%= f.input :title, autofocus: true %>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <%= f.input :tome %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <%= f.input :author %>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <%= f.input :editor %>
+      </div>
+    </div>
+    <%= f.input :isbn %>
+    <%= f.input :asin, as: :hidden %>
+    <%= f.input :release_date, as: :hidden %>
+    <%#= f.input :cover unless params[:asin].present? %>
+  </div>
+  <div class="modal-footer">
+    <span class="pull-left"><%= icon_button_link_to '', book_path(@book), method: :delete, data: {confirm: "#{t 'are_you_sure'}"}, icon: 'trash', level: 'danger' unless @book.new_record? %></span>
+    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t 'close' %></button>
+    <%= f.button :submit, class: 'btn btn-success', data: {disable_with: "#{t 'saving'}"} %>
+  </div>
+<% end %>

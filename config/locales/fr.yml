@@ -1,0 +1,16 @@
+fr:
+  site_name: BDVORE
+  saving: 'Sauvegarde...'
+  close: Fermer
+  are_you_sure: "Êtes-vous sûr de vouloir continuer?"
+  helpers:
+    submit:
+      create: Enregistrer
+      update: Enregistrer
+      submit: Enregistrer
+      user:
+        update: Update profile
+  activerecord:
+    attributes:
+      book:
+        isbn: ISBN

@@ -1,4 +1,4 @@
-<%= form_tag({controller: "books", action: "search_on_amazon"}, method: :post, remote: true, class: 'global-search') do %>
+<%= form_tag({controller: "books", action: "search_on_amazon"}, method: :post, remote: true, class: 'global-search', style: 'display:none;') do %>
   <div class="row">
 	  <div class="col-xs-7 col-md-10">
 	    <%= text_field_tag(:q, '', value: 'Thorgal Tome 5', placeholder: 'Thorgal Tome 5, ISBN...', class: 'form-control input-lg') %>
@@ -9,6 +9,10 @@
 	</div>
 <% end %>
 
+<form id="global-search" action="<%= books_path %>" method="GET" class='global-search'>
+  <input type="text" placeholder="Cherchez dans votre collection: XIII, Tome 5, Non lu..." class="form-control input-lg" name="query"/>
+</form>
+
 <div id="search-results"></div>
 
 <div class="row" id="books">
@@ -17,4 +21,3 @@
   <% end %>
 </div>
 
-<%= render 'modal' %>

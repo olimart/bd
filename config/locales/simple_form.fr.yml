@@ -29,6 +29,13 @@ fr:
         available: Disponible
       book:
         isbn: ISBN
+        title: Titre
+        author: Auteur(s)
+        editor: Éditeur
+        read: Lu
+        serie_id: Série
+      serie:
+        name: Nom de la série
     # user:
     #   new:
     #     email: 'E-mail para efetuar o sign in.'

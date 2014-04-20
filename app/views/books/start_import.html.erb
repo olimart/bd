@@ -1,0 +1,9 @@
+<div class="well">
+  <%= form_tag import_books_path, multipart: true do %>
+    <div class="form-group">
+    	 <%= file_field_tag :file %>
+    	 <p class="help-block">Seuls les fichiers csv sont acceptés.</p>
+    </div>
+    <%= submit_tag "Importer", class: 'btn btn-default' %>
+  <% end %>
+</div>

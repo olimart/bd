@@ -15,22 +15,27 @@ ActiveRecord::Schema.define(version: 20131213000141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
+  enable_extension "isn"
 
   create_table "books", force: true do |t|
     t.string   "title"
-    t.string   "volume"
+    t.string   "tome"
     t.string   "author"
     t.string   "editor"
-    t.boolean  "read",               default: false
+    t.boolean  "read",         default: true
     t.string   "isbn"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
+    t.datetime "release_date"
+    t.string   "keywords"
     t.integer  "serie_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "books", ["author"], name: "index_books_on_author", using: :btree
+  add_index "books", ["editor"], name: "index_books_on_editor", using: :btree
+  add_index "books", ["isbn"], name: "index_books_on_isbn", using: :btree
+  add_index "books", ["serie_id"], name: "index_books_on_serie_id", using: :btree
 
   create_table "series", force: true do |t|
     t.string "name"

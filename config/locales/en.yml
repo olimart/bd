@@ -1,7 +1,0 @@
-en:
-  site_name: BDVORE
-  saving: 'Saving...'
-  activerecord:
-    attributes:
-      book:
-        isbn: ISBN

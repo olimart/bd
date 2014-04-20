@@ -10,7 +10,7 @@ ready = function() {
   });
   return $("#import-link").click(function(e) {
     e.preventDefault();
-    return $(".global-search").toggle();
+    return $(".global-search").toggle('fast');
   });
 };
 

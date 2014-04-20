@@ -2,7 +2,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :update_reading_status]
 
   def index
-    @books = Book.all
+    if params[:query].present?
+      @books = Book.search_by_keyword(params[:query]).limit(30)
+    else
+      @books = Book.order('created_at DESC')
+    end
   end
 
   def show
@@ -18,10 +22,12 @@ class BooksController < ApplicationController
         @book = Book.new(
           isbn: asin, # For books, the ASIN is the same as the ISBN number
           title: book.get('ItemAttributes/Title'),
-          volume: '',
+          tome: '',
           author: book.get('ItemAttributes/Author').present? ? book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
-          editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher')
+          editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher'),
+          release_date: book.get('ItemAttributes/ReleaseDate')
         )
+        puts "#{@book.inspect}"
       else
         @book = Book.new
       end
@@ -79,7 +85,7 @@ class BooksController < ApplicationController
   def search_on_amazon
     if params[:q].present?
       @results = Amazon::Ecs.item_search(params[:q], {response_group: 'Medium', sort: 'salesrank', country: 'fr'})
-      puts @results.to_json
+      # puts @results.to_json
     else
       render :index, alert: 'No search criteria'
     end
@@ -87,6 +93,20 @@ class BooksController < ApplicationController
 
   def update_reading_status
     @book.update_reading_status
+  end
+
+  def import
+    if params[:file].present?
+      begin
+        Book.import(params[:file])
+        redirect_to root_url, notice: "BD importées."
+      rescue Exception => e
+        redirect_to start_import_books_url, alert: e.message
+      end
+    else
+      redirect_to start_import_books_url
+      flash.alert = "Veuillez sélectionner un fichier."
+    end
   end
 
   private
@@ -97,6 +117,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :serie_id, :volume, :read, :cover, :author, :editor, :asin, serie_attributes: [:name])
+      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, serie_attributes: [:name])
     end
 end

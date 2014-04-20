@@ -9,13 +9,14 @@ module BookHelper
   	if book.amazon_id.present?
   		image_tag(amzn_image_url(book))
     else
-    	holder_tag '155x212', 'cover'
+      image_tag('cover.jpg')
+    	#holder_tag '155x212', 'cover'
     	# "http://placehold.it/155x212&text=cover"
     end
   end
 
   def formatted_title(book)
-  	book.volume.present? ? "##{book.volume} - #{book.title}" : book.title
+  	book.tome.present? ? "##{book.tome} - #{book.title}" : book.title
   end
 
 end

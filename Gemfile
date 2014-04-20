@@ -45,8 +45,9 @@ gem 'kaminari-bootstrap'
 gem 'six'
 gem 'amazon-ecs'
 #gem 'paperclip'
-gem 'paperclip-googledrive'
+#gem 'paperclip-googledrive'
 gem 'holder_rails'
+gem 'pg_search'
 
 group :development, :test do
   gem 'faker', '1.0.1'

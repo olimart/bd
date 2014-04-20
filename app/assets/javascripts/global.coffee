@@ -15,7 +15,7 @@ ready = ->
 
   $("#import-link").click (e) ->
     e.preventDefault()
-    $(".global-search").toggle()
+    $(".global-search").toggle('fast')
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

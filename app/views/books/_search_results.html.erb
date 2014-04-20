@@ -1,5 +1,5 @@
 <% if @results.present? %>
-  <div class="row">
+  <div class="row search-results">
 	  <% @results.items.each do |item| %>
 
 	    <% item_attributes = item.get_element('ItemAttributes') %>
@@ -9,34 +9,22 @@
 		  <% medium_img = item.get_hash('MediumImage') %>
 		  <% large_img = item.get_hash('LargeImage') %>
 
-	   <div class='col-sm-6 col-md-2'>
+	   <div class='book col-sm-6 col-md-2'>
 			  <div class="thumbnail">
 			    <% if medium_img %>
-		  	    <%= image_tag(large_img["URL"]) %>
+		  	    <%= image_tag(large_img["URL"], size: '155x212') %>
 		  	  <% else %>
-		  	    <img src="http://placehold.it/155x212&text=cover">
+		  	    <%= holder_tag '155x212', 'cover' %>
+		  	    <!-- <img src="http://placehold.it/155x212&text=cover"> -->
 		  	  <% end %>
 			    <div class="caption">
-			      <h4 class='book-title'><%= item_attributes.get('Title').truncate(48) %></h4>
+			      <h4 class='title'><%= item_attributes.get('Title').truncate(45).titleize %></h4>
             <p><%= link_to "Ajouter", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default btn-block' %></p>
 			    </div>
 			  </div>
 			</div>
 		<% end %>
 	</div>
-
-	  <!-- <li><strong><%#= item_attributes.get('Title') %></strong></li>
-	  <li><small>ISBN: <%#= item_attributes.get('ISBN') %> || ASIN: <%#= asin %></small></li>
-
-	  <li>Author: <%#= item_attributes.get_array('Author').to_sentence %></li>
-	  <li>Editor: <%#= item_attributes.get('Manufacturer') %></li> -->
-
-    <%#= image_tag(small_img["URL"]) if small_img %>
-    <%#= image_tag(medium_img["URL"]) if medium_img %>
-    <%#= image_tag(large_img["URL"]) if large_img %>
-
-	  <!-- <p><%#= link_to "Importer", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default' %></p> -->
-
 <% else %>
   <p class="alert alert-warning">Aucun livre trouvé.</p>
 <% end %>

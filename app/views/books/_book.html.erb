@@ -1,22 +1,18 @@
 <%= content_tag_for :div, book, class: 'col-sm-6 col-md-2' do %>
   <div class="thumbnail">
-    <% if book.cover.present? %>
-      <%#= image_tag book.cover.url(:thumb) %>
-    <% else %>
-      <%= coverz(book) %>
-    <% end %>
+    <%= coverz(book) %>
     <div class="caption">
       <h4 class='title'><%= link_to book.title.truncate(48), edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %></h4>
       <p><small>
         <%= book.serie.try(:name) || "&nbsp;".html_safe %>
-        <% if book.volume.present? %>
-          <span class="pull-right">#<%= book.volume %></span>
+        <% if book.tome.present? %>
+          <span class="pull-right">#<%= book.tome %></span>
         <% end %>
       </small></p>
       <!-- <p><small>ISBN: <%= book.isbn %></small></p> -->
       <p class='meta'>
-        <%= link_to(content_tag(:span, '', class: "glyphicon glyphicon-#{book.read? ? 'ok' : 'star-empty'}"), update_reading_status_book_path(book), method: :post, remote: true) %>
-        <%= link_to(content_tag(:span, '', class: "glyphicon glyphicon-#{book.read? ? 'heart' : 'star-empty'}"), update_reading_status_book_path(book), method: :post, remote: true, class: 'pull-right') %>
+        <%= icon_link_to '', update_reading_status_book_path(book), method: :post, remote: true, icon: 'ok', class: "#{book.read? ? 'read' : ''}" %>
+        <%#= link_to(content_tag(:span, '', class: "glyphicon glyphicon-#{book.read? ? 'heart' : 'star-empty'}"), update_reading_status_book_path(book), method: :post, remote: true, class: 'pull-right') %>
       </p>
     </div>
   </div>
