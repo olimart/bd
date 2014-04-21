@@ -12,13 +12,14 @@
 	   <div class='book col-sm-6 col-md-2'>
 			  <div class="thumbnail">
 			    <% if medium_img %>
-		  	    <%= image_tag(large_img["URL"], size: '155x212') %>
+		  	    <%= image_tag(large_img["URL"], size: '172x212') %>
 		  	  <% else %>
-		  	    <%= holder_tag '155x212', 'cover' %>
+		  	    <%= holder_tag '172x212', 'cover' %>
 		  	    <!-- <img src="http://placehold.it/155x212&text=cover"> -->
 		  	  <% end %>
 			    <div class="caption">
-			      <h4 class='title'><%= item_attributes.get('Title').truncate(45).titleize %></h4>
+			      <h5 class='title'><%= item_attributes.get('Title').truncate(75).titleize %></h5>
+			      <p class='text-muted'><%= item.get('ItemAttributes/ReleaseDate') || '--' %></p>
             <p><%= link_to "Ajouter", new_book_path(asin: asin), data: {toggle: 'modal', target: '#page-modal'}, class: 'btn btn-default btn-block' %></p>
 			    </div>
 			  </div>

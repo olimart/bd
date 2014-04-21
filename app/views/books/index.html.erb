@@ -9,16 +9,14 @@
 	</div>
 <% end %>
 
-<form id="global-search" action="<%= books_path %>" method="GET" class='global-search'>
-  <input type="text" placeholder="Cherchez dans votre collection: XIII, Tome 5, Non lu..." class="form-control input-lg" name="query"/>
-</form>
+
 
 <div id="search-results"></div>
 
 <%# cache do %>
 	<div class="row" id="books">
 	  <% @books.each do |book| %>
-	    <%= render 'book', book: book %>
+	    <%= render 'book2', book: book %>
 	  <% end %>
 	</div>
 <%# end %>
