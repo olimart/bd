@@ -15,9 +15,10 @@
 
 <div id="search-results"></div>
 
-<div class="row" id="books">
-  <% @books.each do |book| %>
-    <%= render 'book', book: book %>
-  <% end %>
-</div>
-
+<%# cache do %>
+	<div class="row" id="books">
+	  <% @books.each do |book| %>
+	    <%= render 'book', book: book %>
+	  <% end %>
+	</div>
+<%# end %>
