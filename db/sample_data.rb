@@ -1,15 +1,4 @@
-# puts 'creating series...'
-
-# 20.times do |x|
-#   print '.'
-#   u = x + 1
-#   serie = Serie.create!(
-#     name: Faker::Lorem.words(4).join(' ')
-#   )
-# end
-
 puts 'creating books...'
-
 
 s = Serie.create!(name: "12 SEPTEMBRE".humanize)
 s.books.create!(tome: '1', title: "LE CALIFAT DE STOCKHOLM".humanize, author: "SEITER, GABRIELLI".titleize, editor: "GLENAT".humanize)
@@ -507,20 +496,3 @@ s.books.create!(tome: '1', title: "LE MANGEUR DE CHAGRIN".humanize, author: "PEC
 
 s = Serie.create!(name: "YONI".humanize)
 s.books.create!(tome: '1', title: "DOLLYMORPHING".humanize, author: "BERTHET, YANN".titleize, editor: "DUPUIS".humanize)
-
-
-
-# 100.times do |x|
-#   print '.'
-#   u = x + 1
-#   book = Book.create!(
-#     title: Faker::Lorem.words(4).join(' '),
-#     serie_id: Serie.all.map(&:id).sample,
-#     editor: Faker::Name.first_name,
-#     author: Faker::Name.last_name,
-#     tome: u,
-#     read: [true, false].sample,
-#   )
-# end
-
-# print "\n"
