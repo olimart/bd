@@ -7,9 +7,9 @@ module BookHelper
 
   def coverz(book)
   	if book.amazon_id.present?
-  		image_tag(amzn_image_url(book))
+  		image_tag(amzn_image_url(book), size: '230x250')
     else
-      image_tag('cover.jpg')
+      image_tag('cover.jpg', size: '230x250')
     	#holder_tag '155x212', 'cover'
     	# "http://placehold.it/155x212&text=cover"
     end

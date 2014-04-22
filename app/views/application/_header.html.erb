@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -9,12 +9,14 @@
       </button>
       <a class="navbar-brand" href=""><%= t 'site_name' %></a>
     </div>
-    <form id="global-search" action="<%= books_path %>" method="GET" class="navbar-form navbar-right" role="search">
-      <div class="form-group">
-        <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
-      </div>
-      <%= icon_button_link_to '', '#', id: 'import-link', class: 'btn btn-default', icon: 'plus' %>
-      <%= icon_button_link_to '', '', icon: 'align-justify', level: 'default' %>
-    </form>
+    <div class="navbar-collapse collapse" style="height: 1px;">
+      <form id="global-search" action="<%= books_path %>" method="GET" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
+        </div>
+        <%= icon_button_link_to '', '#', id: 'import-link', class: 'btn btn-default', icon: 'plus' %>
+        <%= icon_button_link_to '', '', icon: 'align-justify', level: 'default' %>
+      </form>
+    </div>
   </div>
 </nav>
