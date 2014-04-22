@@ -5,7 +5,7 @@ class BooksController < ApplicationController
     if params[:query].present?
       @books = Book.search_by_keyword(params[:query]).limit(30)
     else
-      @books = Book.order('created_at DESC')
+      @books = Book.all
     end
   end
 

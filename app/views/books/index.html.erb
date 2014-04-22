@@ -11,8 +11,37 @@
 
 <div id="search-results"></div>
 
-<div class="row" id="books">
-  <% @books.each do |book| %>
-    <%= render 'book', book: book %>
-  <% end %>
-</div>
+<% if params[:view] == 'list' %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Tome</th>
+        <th>Série</th>
+        <th>Auteur(s)</th>
+        <th>Éditeur</th>
+        <th>Date de publication</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.joins(:serie).order('series.name', :tome).each do |book| %>
+        <tr>
+          <td><%= link_to book.title, edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %> <%= status_tag('NON LU', level: 'default') if !book.read %></td>
+          <td><%= book.tome %></td>
+          <td><%= book.serie.try(:name) %></td>
+          <td><%= book.author %></td>
+          <td><%= book.editor %></td>
+          <td><%= book.release_date.to_date if book.release_date.present? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="row" id="books">
+	  <% @books.order('created_at DESC').each do |book| %>
+	    <%= render 'book', book: book %>
+	  <% end %>
+	</div>
+<% end %>
+

@@ -44,8 +44,9 @@ class Book < ActiveRecord::Base
 
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
-	validates_uniqueness_of :isbn, allow_blank: true
+	validates_uniqueness_of :isbn, allow_blank: true, message: 'existe déjà'
   validates_presence_of :title
+  validates_uniqueness_of :tome, scope: :serie_id, allow_blank: true, message: 'existe déjà pour cette série'
 
 
   # INSTANCE METHODS

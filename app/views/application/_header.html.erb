@@ -15,7 +15,8 @@
           <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
         </div>
         <%= icon_button_link_to '', '#', id: 'import-link', class: 'btn btn-default', icon: 'plus' %>
-        <%= icon_button_link_to '', '', icon: 'align-justify', level: 'default' %>
+        <%= icon_button_link_to '', books_path(view: 'list'), icon: 'align-justify', level: 'default', id: 'toggle-list-view' %>
+        <%= icon_button_link_to '', books_path, icon: 'ok', level: 'default', id: 'toggle-grid-view', style: 'display:none;' %>
       </form>
     </div>
   </div>

@@ -20,14 +20,14 @@ s.books.create!(tome: '12', title: "PETIT TOUR AVEC MALCOM".humanize, author: "J
 
 
 s = Serie.create!(name: "ALPHA - PREMIèRES ARMES".humanize)
-s.books.create!(tome: '1', title: "BAPTÊME DE FEU".humanize, author: "LOUTTE, HERZET".titleize, editor: "LOMBARD".humanize)
+s.books.create!(tome: '1', title: "BAPTêME DE FEU".humanize, author: "LOUTTE, HERZET".titleize, editor: "LOMBARD".humanize)
 
 
 s = Serie.create!(name: "ALVIN NORGE".humanize)
 s.books.create!(tome: '1', title: "@ENFER.ZCOM".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
 s.books.create!(tome: '2', title: "MORPHING AMER".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
 s.books.create!(tome: '3', title: "LUCYBER".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
-s.books.create!(tome: '4', title: "SHANGAï HYPOTHESE".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
+s.books.create!(tome: '4', title: "SHANGAï HYPOTHÈSE".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
 s.books.create!(tome: '5', title: "QUANTUM".humanize, author: "CHRIS LAMQUET".titleize, editor: "LOMBARD".humanize)
 
 
@@ -56,7 +56,7 @@ s.books.create!(tome: '2', title: "NIVEAU 2 : tome 2".humanize, author: "CORBEYR
 s.books.create!(tome: '3', title: "NIVEAU 3 : tome 3".humanize, author: "CORBEYRAN, ROLLIN".titleize, editor: "GLENAT".humanize)
 
 
-s = Serie.create!(name: "BLACK OP".humanize)
+s = Serie.create!(name: "Black Op")
 s.books.create!(tome: '1', title: "Saison 1 : tome 1".humanize, author: "DESBERG, LABIANO".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '2', title: "Saison 1 : tome 2".humanize, author: "DESBERG, LABIANO".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '3', title: "Saison 1 : tome 3".humanize, author: "DESBERG, LABIANO".titleize, editor: "DARGAUD".humanize)
@@ -460,7 +460,7 @@ s = Serie.create!(name: "WESTERN".humanize)
 s.books.create!(tome: '1', title: "WESTERN".humanize, author: "ROSINSKI, VAN HAMME".titleize, editor: "LOMBARD".humanize)
 
 
-s = Serie.create!(name: "XIII".humanize)
+s = Serie.create!(name: "XIII")
 s.books.create!(tome: '1', title: "LE JOUR DU SOLEIL NOIR".humanize, author: "VANCE, VAN HAMME".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '2', title: "LA OU VA L'INDIEN…".humanize, author: "VANCE, VAN HAMME".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '3', title: "TOUTES LES LARMES DE L'ENFER".humanize, author: "VANCE, VAN HAMME".titleize, editor: "DARGAUD".humanize)
@@ -483,7 +483,7 @@ s.books.create!(tome: '19', title: "LA VERSION IRLANDAISE".humanize, author: "VA
 s.books.create!(tome: '20', title: "LE JOUR DU MAYFLOWER".humanize, author: "JIGOUNOV, SENTE".titleize, editor: "DARGAUD".humanize)
 
 
-s = Serie.create!(name: "XIII MYSTERY".humanize)
+s = Serie.create!(name: "XIII Mystery")
 s.books.create!(tome: '1', title: "LA MANGOUSTE".humanize, author: "MEYER, DORISON".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '2', title: "IRINA".humanize, author: "CORBEYRAN, BERTHET".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '3', title: "LITTLE JONES".humanize, author: "HENNINOT, YANN".titleize, editor: "DARGAUD".humanize)
