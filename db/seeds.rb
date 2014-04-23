@@ -279,8 +279,8 @@ s.books.create!(tome: '12', title: "SAISON 2: CHUTES".humanize, author: "CORBEYR
 
 s = Serie.create!(name: "LE SCORPION".humanize)
 s.books.create!(tome: '1', title: "LA MARQUE DU DIABLE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
-s.books.create!(tome: '2', title: "LE SECRT DU PAPE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
-s.books.create!(tome: '3', title: "LA CROIX DE PRIERE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
+s.books.create!(tome: '2', title: "LE SECRET DU PAPE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
+s.books.create!(tome: '3', title: "LA CROIX DE PIERRE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '4', title: "LE DEMON AU VATICAN".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '5', title: "LA VALLéE SACRéE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '6', title: "LE TRéSOR DU TEMPLE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)

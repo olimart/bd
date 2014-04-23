@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
 
   # ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
-  belongs_to :serie
+  belongs_to :serie, touch: true
   accepts_nested_attributes_for :serie
 
 
@@ -40,6 +40,7 @@ class Book < ActiveRecord::Base
   # after_create  :import_cover
   # before_save :clean_serie
   before_save :sync_keywords
+  before_save :format_fields
 
 
   # VALIDATIONS
@@ -114,6 +115,10 @@ class Book < ActiveRecord::Base
       keywords << "tome #{self.tome}" if self.tome.present?
       keywords << self.serie.name.downcase.to_s if serie_id.present?
       self.keywords = keywords.join(", ")
+    end
+
+    def format_fields
+      self.isbn = self.isbn.tr('-','') if isbn.present?
     end
 
 end
