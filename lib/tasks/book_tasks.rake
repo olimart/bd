@@ -23,13 +23,14 @@ namespace :book do
   # rake book:set_publication_date
   task set_publication_date: :environment do
     Book.with_isbn.each do |book|
-      puts "**** Book #{book.id} found ****"
-      res = Amazon::Ecs.item_lookup("#{book.isbn}", opts = {response_group: 'Medium', country: 'fr'}).items.first
-	    date = res.get('ItemAttributes/PublicationDate')
+    	unless book.release_date.present?
+    		res = Amazon::Ecs.item_lookup("#{book.isbn}", opts = {response_group: 'Medium', country: 'fr'}).items.first
+	      date = res.get('ItemAttributes/PublicationDate')
 
-	    book.update(release_date: date.to_s)
-	    puts "**** Book ##{book.id} updated with release date: #{date} ****"
-	    sleep 1
+	      book.update(release_date: date.to_s)
+	      puts "**** Book ##{book.id} updated with release date: #{date} ****"
+	      sleep 1
+    	end
     end
   end
 

@@ -167,14 +167,14 @@ s = Serie.create!(name: "GROOM LAKE".humanize)
 s.books.create!(tome: '1', title: "LA PSYCHANALYSE DE L'OUBLI".humanize, author: "DZIALOWSKI, RICHEZ".titleize, editor: "GRAND ANGLE".humanize)
 
 
-s = Serie.create!(name: "HK".humanize)
+s = Serie.create!(name: "HK")
 s.books.create!(tome: '1,1', title: "AVALON".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '1,2', title: "ELYSéE".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '1,3', title: "CALDERA".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '1,4', title: "PARADISO".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
 
 
-s = Serie.create!(name: "IL éTAIT UNE FOIS EN France".humanize)
+s = Serie.create!(name: "Il était une fois en France")
 s.books.create!(tome: '1', title: "L'empire de Monsieur Joseph", author: "NURY, VALLéE".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '2', title: "LE VOL NOIR DES CORBEAUX".humanize, author: "NURY, VALLéE".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '3', title: "HONNEUR ET POLICE".humanize, author: "NURY, VALLéE".titleize, editor: "GLENAT".humanize)
@@ -224,7 +224,7 @@ s.books.create!(tome: '5', title: "MIA MAï".humanize, author: "BOURGNE, DESBERG
 s.books.create!(tome: '6', title: "LA THéORIE DES CORDES FISCALES".humanize, author: "DESBERG, KOLLER".titleize, editor: "LOMBARD".humanize)
 
 
-s = Serie.create!(name: "JAMES HEALER".humanize)
+s = Serie.create!(name: "James Healer")
 s.books.create!(tome: '1', title: "CAMDEN ROCK".humanize, author: "SWOLFS, DE VITA".titleize, editor: "LOMBARD".humanize)
 s.books.create!(tome: '2', title: "LA NUIT DU COBRA".humanize, author: "SWOLFS, DE VITA".titleize, editor: "LOMBARD".humanize)
 s.books.create!(tome: '3', title: "LA MONTAGNE SACRéE".humanize, author: "SWOLFS, DE VITA".titleize, editor: "LOMBARD".humanize)
@@ -328,7 +328,7 @@ s.books.create!(tome: '3', title: "LE FEU DU TEMPS".humanize, author: "ARLESTON,
 s.books.create!(tome: '4', title: "UN PARFUM D'éTERNITé".humanize, author: "ARLESTON, LATIL, LABROSSE".titleize, editor: "SOLEIL".humanize)
 
 
-s = Serie.create!(name: "NOVA GENESIS".humanize)
+s = Serie.create!(name: "NOVA GENESIS".titleize)
 s.books.create!(tome: '1', title: "DENVER".humanize, author: "BOISSIERE, CHABBERT".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '2', title: "GRAND CANYON".humanize, author: "BOISSIERE, CHABBERT".titleize, editor: "GLENAT".humanize)
 s.books.create!(tome: '3', title: "LIBRE ESPACE".humanize, author: "BOISSIERE, CHABBERT".titleize, editor: "GLENAT".humanize)
@@ -345,7 +345,7 @@ s.books.create!(tome: '7', title: "LE CYCLE DU FEU 1".humanize, author: "HUB".ti
 s.books.create!(tome: '8', title: "LE CYCLE DU FEU 2".humanize, author: "HUB".titleize, editor: "DELCOURT".humanize)
 
 
-s = Serie.create!(name: "PANDORA BOX".humanize)
+s = Serie.create!(name: "PANDORA BOX".titleize)
 s.books.create!(tome: '1', title: "L'ORGUEIL".humanize, author: "PAGOT, ALCANTE".titleize, editor: "DUPUIS".humanize)
 s.books.create!(tome: '2', title: "LA PARESSE".humanize, author: "RADOVANOVIC, ALCANTE".titleize, editor: "DUPUIS".humanize)
 s.books.create!(tome: '3', title: "LA GOURMANDISE".humanize, author: "DUPRé, ALCANTE".titleize, editor: "DUPUIS".humanize)
@@ -391,7 +391,7 @@ s = Serie.create!(name: "TATANKA".humanize)
 s.books.create!(tome: '1', title: "MORSURE".humanize, author: "CALLèDE, SéJOURNé, VERNEY".titleize, editor: "DELCOURT".humanize)
 
 
-s = Serie.create!(name: "THOMAS SILANE".humanize)
+s = Serie.create!(name: "THOMAS SILANE".titleize)
 s.books.create!(tome: '1', title: "FLASH MORTEL".humanize, author: "BUENDIA, CHANOINAT, LéCOSSOIS".titleize, editor: "GRAND ANGLE".humanize)
 s.books.create!(tome: '2', title: "LE TUEUR DE NOëL".humanize, author: "BUENDIA, CHANOINAT, LéCOSSOIS".titleize, editor: "GRAND ANGLE".humanize)
 s.books.create!(tome: '3', title: "TEMPêTES".humanize, author: "BUENDIA, CHANOINAT, LéCOSSOIS".titleize, editor: "GRAND ANGLE".humanize)
@@ -430,7 +430,7 @@ s.books.create!(tome: '1', title: "LE BERGER DES âMES".humanize, author: "JARRY
 s.books.create!(tome: '2', title: "EDO".humanize, author: "JARRY, DJIEF, COMTOIS".titleize, editor: "SOLEIL".humanize)
 
 
-s = Serie.create!(name: "TONY CORSO".humanize)
+s = Serie.create!(name: "TONY CORSO".titleize)
 s.books.create!(tome: '1', title: "LA COMTESSE VOLODINE".humanize, author: "BERLION".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '2', title: "PRIME TIME".humanize, author: "BERLION".titleize, editor: "DARGAUD".humanize)
 
@@ -445,7 +445,7 @@ s.books.create!(tome: '6', title: "OPéRATION DELUGE".humanize, author: "SWOLFS,
 s.books.create!(tome: '7', title: "15 NOVEMBRE".humanize, author: "SWOLFS, GRIFFO".titleize, editor: "LOMBARD".humanize)
 
 
-s = Serie.create!(name: "WAYNE SHELTON".humanize)
+s = Serie.create!(name: "WAYNE SHELTON".titleize)
 s.books.create!(tome: '1', title: "LA MISSION".humanize, author: "DENAYER, VAN HAMME".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '2', title: "LA TRAHISON".humanize, author: "DENAYER, VAN HAMME".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '3', title: "LE CONTRAT".humanize, author: "DENAYER, VAN HAMME".titleize, editor: "DARGAUD".humanize)
