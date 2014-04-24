@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213000141) do
+ActiveRecord::Schema.define(version: 20140424001358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20131213000141) do
 
   create_table "books", force: true do |t|
     t.string   "title"
-    t.string   "tome"
     t.string   "author"
     t.string   "editor"
     t.boolean  "read",         default: true
@@ -30,11 +29,12 @@ ActiveRecord::Schema.define(version: 20131213000141) do
     t.integer  "serie_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tome"
   end
 
   add_index "books", ["author"], name: "index_books_on_author", using: :btree
   add_index "books", ["editor"], name: "index_books_on_editor", using: :btree
-  add_index "books", ["isbn"], name: "index_books_on_isbn", using: :btree
+  add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
   add_index "books", ["serie_id"], name: "index_books_on_serie_id", using: :btree
 
   create_table "series", force: true do |t|

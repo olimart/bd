@@ -33,6 +33,7 @@ class Book < ActiveRecord::Base
   # SCOPES
   # ------------------------------------------------------------------------------------------------------
   scope :missing_isbn, -> { where(isbn: nil) }
+  scope :with_isbn,    -> { where.not(isbn: nil) }
 
 
   # CALLBACKS

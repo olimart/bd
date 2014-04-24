@@ -285,7 +285,7 @@ s.books.create!(tome: '4', title: "LE DEMON AU VATICAN".humanize, author: "MARIN
 s.books.create!(tome: '5', title: "LA VALLéE SACRéE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '6', title: "LE TRéSOR DU TEMPLE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '7', title: "AU NOM DU PèRE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
-s.books.create!(tome: 'HS', title: "LE PROCèS SCORPION".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
+s.books.create!(tome: '', title: "LE PROCèS SCORPION".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '8', title: "L'OMBRE DE L'ANGE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '9', title: "LE MASQUE DE LA VéRITé".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '10', title: "AU NOM DU FILS".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
