@@ -36,27 +36,3 @@ body {
 .container {
   width: 1380px;
 }
-
-
-/* -----------------------------------------
-/* Browser styling
------------------------------------------ */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: #010101
-}
-
-::-webkit-scrollbar-button {
-    display: none;
-    background-color: #010101
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: #303030
-}
-
-::-webkit-scrollbar-thumb:vertical, ::-webkit-scrollbar-thumb:horizontal {
-    background-color: #717171;
-    -webkit-border-radius: 4px
-}

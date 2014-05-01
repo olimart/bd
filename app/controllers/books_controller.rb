@@ -50,6 +50,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.read = false
 
     respond_to do |format|
       if @book.save

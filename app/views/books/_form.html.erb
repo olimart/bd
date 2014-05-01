@@ -48,7 +48,19 @@
         <%= f.input :editor %>
       </div>
     </div>
-    <%= f.input :isbn %>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <%= f.input :isbn %>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+          <%= f.label :read, 'Lecture' %>
+          <div class="checkbox">
+            <label><%= f.check_box :read %> Lu</label>
+          </div>
+        </div>
+      </div>
+    </div>
     <%= f.input :asin, as: :hidden %>
     <%= f.input :release_date, as: :hidden %>
     <%#= f.input :cover unless params[:asin].present? %>
