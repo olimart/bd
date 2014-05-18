@@ -86,7 +86,7 @@ class BooksController < ApplicationController
   def search_on_amazon
     if params[:q].present?
       @results = Amazon::Ecs.item_search(params[:q], {response_group: 'Medium', sort: 'salesrank', country: 'fr'})
-      # puts @results.to_json
+      # puts @results.inspect
     else
       render :index, alert: 'No search criteria'
     end
@@ -118,6 +118,7 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, serie_attributes: [:name])
+      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
+                                    serie_attributes: [:name])
     end
 end

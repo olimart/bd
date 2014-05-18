@@ -34,6 +34,7 @@ fr:
         editor: Éditeur
         read: Lu
         serie_id: Série
+        cover_url: URL de la couverture
       serie:
         name: Nom de la série
     # user:
