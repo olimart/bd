@@ -5,13 +5,13 @@ class Book < ActiveRecord::Base
   # ------------------------------------------------------------------------------------------------------
   include PgSearch
   pg_search_scope :search_by_keyword,
-                  :against => [:title, :tome, :author, :editor, :keywords],
-                  :using => {
-                    :tsearch => {
-                      :prefix => true # match any characters
+                  against: [:title, :tome, :author, :editor, :keywords],
+                  using: {
+                    tsearch: {
+                      prefix: true # match any characters
                     }
                   },
-                  :ignoring => :accents
+                  ignoring: :accents
 
 
   # ASSOCIATIONS

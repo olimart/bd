@@ -1,4 +1,4 @@
-puts 'creating books...'
+puts 'importing books...'
 
 s = Serie.create!(name: "12 SEPTEMBRE".humanize)
 s.books.create!(tome: '1', title: "LE CALIFAT DE STOCKHOLM".humanize, author: "SEITER, GABRIELLI".titleize, editor: "GLENAT".humanize)
@@ -168,10 +168,10 @@ s.books.create!(tome: '1', title: "LA PSYCHANALYSE DE L'OUBLI".humanize, author:
 
 
 s = Serie.create!(name: "HK")
-s.books.create!(tome: '1,1', title: "AVALON".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
-s.books.create!(tome: '1,2', title: "ELYSéE".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
-s.books.create!(tome: '1,3', title: "CALDERA".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
-s.books.create!(tome: '1,4', title: "PARADISO".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
+s.books.create!(tome: '1', title: "AVALON".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
+s.books.create!(tome: '2', title: "ELYSéE".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
+s.books.create!(tome: '3', title: "CALDERA".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
+s.books.create!(tome: '4', title: "PARADISO".humanize, author: "MORVAN, HERAULT".titleize, editor: "GLENAT".humanize)
 
 
 s = Serie.create!(name: "Il était une fois en France")
@@ -285,7 +285,7 @@ s.books.create!(tome: '4', title: "LE DEMON AU VATICAN".humanize, author: "MARIN
 s.books.create!(tome: '5', title: "LA VALLéE SACRéE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '6', title: "LE TRéSOR DU TEMPLE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '7', title: "AU NOM DU PèRE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
-s.books.create!(tome: '', title: "LE PROCèS SCORPION".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
+s.books.create!(tome: '11', title: "LE PROCèS SCORPION".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '8', title: "L'OMBRE DE L'ANGE".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '9', title: "LE MASQUE DE LA VéRITé".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
 s.books.create!(tome: '10', title: "AU NOM DU FILS".humanize, author: "MARINI, DESBERG".titleize, editor: "DARGAUD".humanize)
