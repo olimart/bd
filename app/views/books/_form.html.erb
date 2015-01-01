@@ -28,46 +28,14 @@
         </div> <!-- /tab-content -->
       </div> <!-- /tabbable -->
     <% elsif Serie.any? && !@book.new_record? %>
-      <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: 'Sélectionnez une série', label: 'Série' %>
+      <%= f.input :serie_id, collection: Serie.order('name').map {|s| [s.name, s.id]}, include_blank: false, prompt: 'Sélectionnez une série', label: 'Série' %>
     <% else %>
       <%= f.fields_for :serie do |s| %>
         <%= s.input :name %>
       <% end %>
     <% end %>
 
-    <div class="row">
-      <div class="col-sm-6 col-md-10">
-        <%= f.input :title, autofocus: true %>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <%= f.input :tome %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :author %>
-      </div>
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :editor %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :isbn %>
-      </div>
-      <div class="col-sm-6 col-md-6">
-        <div class="form-group">
-          <%= f.label :read, 'Lecture' %>
-          <div class="checkbox">
-            <label><%= f.check_box :read %> Lu</label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= f.input :cover_url %>
-    <%= f.input :asin, as: :hidden %>
-    <%= f.input :release_date, as: :hidden %>
-    <%#= f.input :cover unless params[:asin].present? %>
+    <%= render 'form_fields', f: f %>
   </div>
   <div class="modal-footer">
     <span class="pull-left"><%= icon_button_link_to '', book_path(@book), method: :delete, data: {confirm: "#{t 'are_you_sure'}"}, icon: 'trash', level: 'danger' unless @book.new_record? %></span>

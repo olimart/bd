@@ -45,7 +45,7 @@ gem 'amazon-ecs'
 #gem 'paperclip'
 #gem 'paperclip-googledrive'
 gem 'holder_rails'
-gem 'pg_search'
+gem 'pg_search', '~> 0.7.8'
 
 group :development, :test do
   gem 'faker', '1.0.1'

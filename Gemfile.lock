@@ -155,7 +155,7 @@ GEM
       multi_xml (~> 0.5)
       rack (~> 1.2)
     pg (0.17.1)
-    pg_search (0.7.3)
+    pg_search (0.7.8)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
@@ -274,7 +274,7 @@ DEPENDENCIES
   letter_opener
   nested_form
   pg
-  pg_search
+  pg_search (~> 0.7.8)
   rails (= 4.2.0)
   rails_12factor
   rails_bootstrap_helper (~> 1.0.1)!
