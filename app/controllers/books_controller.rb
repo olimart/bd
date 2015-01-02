@@ -49,8 +49,9 @@ class BooksController < ApplicationController
   end
 
   def create
+    # keep serie_id if both serie_id and serie name params present
+    params[:book][:serie_attributes].delete(:name) if params[:book][:serie_id].present?
     @book = Book.new(safe_params)
-    @book.read = false
 
     respond_to do |format|
       if @book.save
@@ -112,12 +113,12 @@ class BooksController < ApplicationController
 
   private
 
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    def safe_params
-      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
-                                    serie_attributes: [:name])
-    end
+  def safe_params
+    params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
+                                 serie_attributes: [:name])
+  end
 end

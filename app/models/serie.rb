@@ -5,13 +5,9 @@ class Serie < ActiveRecord::Base
   has_many :books, dependent: :destroy
 
 
-  # CALLBACKS
-  # ------------------------------------------------------------------------------------------------------
-
-
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
-	validates_uniqueness_of :name, allow_blank: true
+	validates_uniqueness_of :name #, allow_blank: true
 
 
   # INSTANCE METHODS

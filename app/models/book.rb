@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
   # ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
   belongs_to :serie, touch: true
-  accepts_nested_attributes_for :serie
+  accepts_nested_attributes_for :serie, reject_if: :all_blank
 
 
   # PAPERCLIP
@@ -115,7 +115,7 @@ class Book < ActiveRecord::Base
       keywords = []
       keywords << "non lu" if !self.read
       keywords << "tome #{self.tome}" if self.tome.present?
-      keywords << self.serie.name.downcase.to_s if serie_id.present?
+      keywords << serie.name.downcase.to_s if serie_id.present?
       self.keywords = keywords.join(", ")
     end
 
