@@ -7,14 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href=""><%= t 'site_name' %></a>
+      <a class="navbar-brand" href="/"><%= t 'site_name' %></a>
     </div>
     <div class="navbar-collapse collapse" style="height: 1px;">
       <form id="global-search" action="<%= books_path %>" method="GET" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
         </div>
-        <%= icon_button_link_to '', '#', id: 'import-link', class: 'btn btn-default', icon: 'plus' %>
+        <%= icon_button_link_to 'Ajouter', '#', id: 'import-link', class: 'btn btn-default', icon: 'plus' %>
         <%= icon_button_link_to '', books_path(view: 'list'), icon: 'align-justify', level: 'default', id: 'toggle-list-view' %>
         <%= icon_button_link_to '', books_path, icon: 'ok', level: 'default', id: 'toggle-grid-view', style: 'display:none;' %>
       </form>

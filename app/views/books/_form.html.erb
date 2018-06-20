@@ -1,7 +1,10 @@
 <%= simple_nested_form_for(@book, remote: true) do |f| %>
+  <%= hidden_field_tag :list_view, params[:list_view] %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title"><%= @book.new_record? ? "Nouvelle BD" : "Édition" %></h4>
+    <h4 class="modal-title">
+      <%= @book.new_record? ? 'Nouvelle BD' : 'Édition' %>
+    </h4>
   </div>
   <div class="modal-body">
     <div id="error-container"></div>
@@ -15,56 +18,24 @@
         </ul>
         <div class="tab-content">
           <div id="pane1" class="tab-pane active">
-            <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: "Sélectionnez une série", label: false %>
+            <%= f.input :serie_id, collection: Serie.order('name').map {|s| [s.name, s.id]}, include_blank: false, prompt: 'Sélectionnez une série', label: false %>
           </div>
           <div id="pane2" class="tab-pane">
             <%= f.fields_for :serie do |s| %>
-              <%= s.input :name %>
+              <%= s.input :name, required: true %>
             <% end %>
           </div> <!-- /pane2 -->
         </div> <!-- /tab-content -->
       </div> <!-- /tabbable -->
     <% elsif Serie.any? && !@book.new_record? %>
-      <%= f.input :serie_id, collection: Serie.all.map {|s| [s.name, s.id]}, include_blank: false, prompt: "Sélectionnez une série", label: 'Série' %>
+      <%= f.input :serie_id, collection: Serie.order('name').map {|s| [s.name, s.id]}, include_blank: false, prompt: 'Sélectionnez une série', label: 'Série' %>
     <% else %>
       <%= f.fields_for :serie do |s| %>
         <%= s.input :name %>
       <% end %>
     <% end %>
 
-    <div class="row">
-      <div class="col-sm-6 col-md-10">
-        <%= f.input :title, autofocus: true %>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <%= f.input :tome %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :author %>
-      </div>
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :editor %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-6">
-        <%= f.input :isbn %>
-      </div>
-      <div class="col-sm-6 col-md-6">
-        <div class="form-group">
-          <%= f.label :read, 'Lecture' %>
-          <div class="checkbox">
-            <label><%= f.check_box :read %> Lu</label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= f.input :cover_url %>
-    <%= f.input :asin, as: :hidden %>
-    <%= f.input :release_date, as: :hidden %>
-    <%#= f.input :cover unless params[:asin].present? %>
+    <%= render 'form_fields', f: f %>
   </div>
   <div class="modal-footer">
     <span class="pull-left"><%= icon_button_link_to '', book_path(@book), method: :delete, data: {confirm: "#{t 'are_you_sure'}"}, icon: 'trash', level: 'danger' unless @book.new_record? %></span>

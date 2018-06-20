@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-  $('#error-container').html("<%= j @book.errors.full_messages.to_sentence %>");
+  $("#error-container").html('<%= @book.errors.full_messages.to_sentence %>');
 <% else %>
   $("#page-modal").modal('hide');
   $("#books").prepend('<%= j render(@book) %>');

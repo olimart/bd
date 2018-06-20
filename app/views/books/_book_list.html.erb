@@ -1,0 +1,8 @@
+<%= content_tag_for :tr, book, style: 'border:none;' do %>
+  <td><%= link_to book.title, edit_book_path(book, list_view: true), data: {toggle: 'modal', target: '#page-modal'} %> <%= status_tag('NON LU', level: 'default') if !book.read %></td>
+  <td><%= book.tome %></td>
+  <td><%= book.serie.try(:name) %></td>
+  <td><%= book.author.titleize if book.author.present? %></td>
+  <td><%= book.editor.titleize if book.editor.present? %></td>
+  <td><%= book.release_date.to_date if book.release_date.present? %></td>
+<% end %>

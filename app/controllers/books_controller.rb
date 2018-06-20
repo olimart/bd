@@ -49,15 +49,16 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.read = false
+    # keep serie_id if both serie_id and serie name params present
+    params[:book][:serie_attributes].delete(:name) if params[:book][:serie_id].present?
+    @book = Book.new(safe_params)
 
     respond_to do |format|
       if @book.save
         format.html { redirect_to books_url, notice: 'Book was successfully created.' }
         format.js
       else
-        format.html { render action: 'new' }
+        format.html { render :new }
         format.js
       end
     end
@@ -65,11 +66,11 @@ class BooksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update(book_params)
+      if @book.update(safe_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.js
       else
-        format.html { render action: 'edit' }
+        format.html { render :edit }
         format.js
       end
     end
@@ -111,14 +112,13 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def book_params
-      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
-                                    serie_attributes: [:name])
-    end
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  def safe_params
+    params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
+                                 serie_attributes: [:name])
+  end
 end

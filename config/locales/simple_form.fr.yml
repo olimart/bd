@@ -19,13 +19,6 @@ fr:
         first_name: Prénom
         last_name: Nom
         name: Nom
-        phone: Téléphone
-        address1: Adresse 1
-        address2: Adresse 2
-        city: Ville
-        postal_code: Code postal
-        country: Pays
-        localization: Localisation
         available: Disponible
       book:
         isbn: ISBN

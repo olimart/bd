@@ -1,10 +1,10 @@
-<%= form_tag({controller: "books", action: "search_on_amazon"}, method: :post, remote: true, class: 'global-search', style: 'display:none;') do %>
+<%= form_tag({controller: 'books', action: 'search_on_amazon'}, method: :post, remote: true, class: 'global-search', style: 'display:none;') do %>
   <div class="row">
 	  <div class="col-xs-7 col-md-10">
 	    <%= text_field_tag(:q, '', placeholder: 'Thorgal Tome 5, ISBN...', class: 'form-control input-lg') %>
 	  </div>
 	  <div class="col-xs-5 col-md-2">
-	    <%= submit_tag("Rechercher", data: {disable_with: "Recherche..."}, class: 'btn btn-default btn-lg btn-block') %>
+	    <%= submit_tag("Rechercher", data: {disable_with: 'Recherche...'}, class: 'btn btn-default btn-lg btn-block') %>
 	  </div>
 	</div>
 <% end %>
@@ -26,14 +26,7 @@
 
     <tbody>
       <% @books.joins(:serie).order('series.name', :tome).each do |book| %>
-        <tr>
-          <td><%= link_to book.title, edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %> <%= status_tag('NON LU', level: 'default') if !book.read %></td>
-          <td><%= book.tome %></td>
-          <td><%= book.serie.try(:name) %></td>
-          <td><%= book.author.titleize if book.author.present? %></td>
-          <td><%= book.editor.titleize if book.editor.present? %></td>
-          <td><%= book.release_date.to_date if book.release_date.present? %></td>
-        </tr>
+        <%= render 'book_list', book: book %>
       <% end %>
     </tbody>
   </table>

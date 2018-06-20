@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140518154126) do
   enable_extension "unaccent"
   enable_extension "isn"
 
-  create_table "books", force: true do |t|
+  create_table "books", force: :cascade do |t|
     t.string   "title"
     t.string   "author"
     t.string   "editor"
@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 20140518154126) do
 
   add_index "books", ["author"], name: "index_books_on_author", using: :btree
   add_index "books", ["editor"], name: "index_books_on_editor", using: :btree
-  add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
+  add_index "books", ["isbn"], name: "index_books_on_isbn", using: :btree
   add_index "books", ["serie_id"], name: "index_books_on_serie_id", using: :btree
 
-  create_table "series", force: true do |t|
+  create_table "series", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
