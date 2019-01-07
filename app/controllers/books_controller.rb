@@ -23,7 +23,8 @@ class BooksController < ApplicationController
           isbn: asin, # For books, the ASIN is the same as the ISBN number
           title: book.get('ItemAttributes/Title'),
           tome: '',
-          author: book.get('ItemAttributes/Author').present? ? book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
+          author: book.get('ItemAttributes/Author').present? ?
+            book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
           editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher'),
           release_date: book.get('ItemAttributes/ReleaseDate')
         )
@@ -86,8 +87,16 @@ class BooksController < ApplicationController
 
   def search_on_amazon
     if params[:q].present?
-      @results = Amazon::Ecs.item_search(params[:q], {response_group: 'Medium', sort: 'salesrank', country: 'fr'})
-      # puts @results.inspect
+      begin
+        @results = Amazon::Ecs.item_search(params[:q], {
+          response_group: 'Medium',
+          sort: 'salesrank',
+          country: 'fr'}
+        )
+        # puts @results.inspect
+      rescue Amazon::RequestError => e
+        @error_msg = e.message
+      end
     else
       render :index, alert: 'No search criteria'
     end
@@ -113,12 +122,13 @@ class BooksController < ApplicationController
 
   private
 
-  def set_book
-    @book = Book.find(params[:id])
-  end
+    def set_book
+      @book = Book.find(params[:id])
+    end
 
-  def safe_params
-    params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author, :editor, :asin, :cover_url,
-                                 serie_attributes: [:name])
-  end
+    def safe_params
+      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author,
+        :editor, :asin, :cover_url,
+        serie_attributes: [:name])
+    end
 end
