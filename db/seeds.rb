@@ -1,4 +1,4 @@
-puts 'importing books...'
+puts 'Importing books...'
 
 s = Serie.create!(name: "12 SEPTEMBRE".humanize)
 s.books.create!(tome: '1', title: "LE CALIFAT DE STOCKHOLM".humanize, author: "SEITER, GABRIELLI".titleize, editor: "GLENAT".humanize)

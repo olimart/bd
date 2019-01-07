@@ -3,15 +3,13 @@
 one:
   serie: MyString
   title: MyString
-  number: MyString
+  tome: MyString
   author: MyString
-  edition: MyString
   read: false
 
 two:
   serie: MyString
   title: MyString
-  number: MyString
+  tome: MyString
   author: MyString
-  edition: MyString
   read: false
