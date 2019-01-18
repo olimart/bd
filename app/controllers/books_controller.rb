@@ -15,20 +15,17 @@ class BooksController < ApplicationController
   def new
     if params[:isbn].present?
       isbn = params[:isbn]
-      puts "**** Importing ISBN: #{isbn} ****"
       book = BookSearch::Amazon.new(isbn).call
-      # puts "#{results.inspect}" // inspect results
       if book.present?
+        b = BookDecorator::Base.new(book)
         @book = Book.new(
-          isbn: isbn, # For books, the ASIN is the same as the ISBN number
-          title: book.get('ItemAttributes/Title'),
+          isbn: b.isbn,
+          title: b.title,
           tome: '',
-          author: book.get('ItemAttributes/Author').present? ?
-            book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
-          editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher'),
-          release_date: book.get('ItemAttributes/ReleaseDate')
+          author: b.author,
+          editor: b.editor,
+          release_date: b.release_date
         )
-        # puts @book.inspect
       else
         @book = Book.new
       end
