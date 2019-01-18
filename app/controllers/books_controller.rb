@@ -13,14 +13,14 @@ class BooksController < ApplicationController
   end
 
   def new
-    if params[:asin].present?
-      asin = params[:asin]
-      puts "**** Importing ASIN: #{asin} ****"
-      book = Amazon::Ecs.item_lookup(asin, opts = {response_group: 'Medium', country: 'fr'}).items.first
+    if params[:isbn].present?
+      isbn = params[:isbn]
+      puts "**** Importing ISBN: #{isbn} ****"
+      book = BookSearch::Amazon.new(isbn).call
       # puts "#{results.inspect}" // inspect results
       if book.present?
         @book = Book.new(
-          isbn: asin, # For books, the ASIN is the same as the ISBN number
+          isbn: isbn, # For books, the ASIN is the same as the ISBN number
           title: book.get('ItemAttributes/Title'),
           tome: '',
           author: book.get('ItemAttributes/Author').present? ?
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
           editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher'),
           release_date: book.get('ItemAttributes/ReleaseDate')
         )
-        puts "#{@book.inspect}"
+        # puts @book.inspect
       else
         @book = Book.new
       end
@@ -51,7 +51,9 @@ class BooksController < ApplicationController
 
   def create
     # keep serie_id if both serie_id and serie name params present
-    params[:book][:serie_attributes].delete(:name) if params[:book][:serie_id].present?
+    if params[:book][:serie_id].present?
+      params[:book][:serie_attributes].delete(:name)
+    end
     @book = Book.new(safe_params)
 
     respond_to do |format|
