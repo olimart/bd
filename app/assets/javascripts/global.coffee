@@ -17,8 +17,6 @@ ready = ->
     e.preventDefault()
     $(".global-search").toggle('fast')
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
-#$(document).on('page:change', ready)
-$(document).bind 'page:change', ->
+$(document).on('turbolinks:load', ready)
+$(document).bind 'turbolinks:load', ->
   Holder.run()
