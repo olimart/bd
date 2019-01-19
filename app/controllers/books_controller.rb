@@ -13,22 +13,19 @@ class BooksController < ApplicationController
   end
 
   def new
-    if params[:asin].present?
-      asin = params[:asin]
-      puts "**** Importing ASIN: #{asin} ****"
-      book = Amazon::Ecs.item_lookup(asin, opts = {response_group: 'Medium', country: 'fr'}).items.first
-      # puts "#{results.inspect}" // inspect results
+    if params[:isbn].present?
+      isbn = params[:isbn]
+      book = BookSearch::Amazon.new(isbn).call
       if book.present?
+        b = BookDecorator::Base.new(book)
         @book = Book.new(
-          isbn: asin, # For books, the ASIN is the same as the ISBN number
-          title: book.get('ItemAttributes/Title'),
+          isbn: b.isbn,
+          title: b.title,
           tome: '',
-          author: book.get('ItemAttributes/Author').present? ?
-            book.get_array('Author').join(', ') : book.get_array('Creator').join(', '),
-          editor: book.get('ItemAttributes/Manufacturer') || book.get('ItemAttributes/Publisher'),
-          release_date: book.get('ItemAttributes/ReleaseDate')
+          author: b.author,
+          editor: b.editor,
+          release_date: b.release_date
         )
-        puts "#{@book.inspect}"
       else
         @book = Book.new
       end
@@ -51,7 +48,9 @@ class BooksController < ApplicationController
 
   def create
     # keep serie_id if both serie_id and serie name params present
-    params[:book][:serie_attributes].delete(:name) if params[:book][:serie_id].present?
+    if params[:book][:serie_id].present?
+      params[:book][:serie_attributes].delete(:name)
+    end
     @book = Book.new(safe_params)
 
     respond_to do |format|

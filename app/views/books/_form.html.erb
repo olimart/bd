@@ -18,7 +18,7 @@
         </ul>
         <div class="tab-content">
           <div id="pane1" class="tab-pane active">
-            <%= f.input :serie_id, collection: Serie.order('name').map {|s| [s.name, s.id]}, include_blank: false, prompt: 'Sélectionnez une série', label: false %>
+            <%= f.input :serie_id, collection: Serie.order('name').map { |s| [s.name, s.id] }, include_blank: false, prompt: 'Sélectionnez une série', label: false %>
           </div>
           <div id="pane2" class="tab-pane">
             <%= f.fields_for :serie do |s| %>
@@ -38,8 +38,8 @@
     <%= render 'form_fields', f: f %>
   </div>
   <div class="modal-footer">
-    <span class="pull-left"><%= icon_button_link_to '', book_path(@book), method: :delete, data: {confirm: "#{t 'are_you_sure'}"}, icon: 'trash', level: 'danger' unless @book.new_record? %></span>
+    <span class="pull-left"><%= icon_button_link_to '', book_path(@book), method: :delete, data: { confirm: t('are_you_sure') }, icon: 'trash', level: 'danger' unless @book.new_record? %></span>
     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><%= t 'close' %></button>
-    <%= f.button :submit, class: 'btn btn-success', data: {disable_with: "#{t 'saving'}"} %>
+    <%= f.button :submit, class: 'btn btn-success', data: { disable_with: t('saving') } %>
   </div>
 <% end %>

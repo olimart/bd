@@ -1,14 +1,4 @@
-<%= form_tag({controller: 'books', action: 'search_on_amazon'}, method: :post, remote: true, class: 'global-search', style: 'display:none;') do %>
-  <div class="row">
-	  <div class="col-xs-7 col-md-10">
-	    <%= text_field_tag(:q, '', placeholder: 'Thorgal Tome 5, ISBN...', class: 'form-control input-lg') %>
-	  </div>
-	  <div class="col-xs-5 col-md-2">
-	    <%= submit_tag("Rechercher", data: {disable_with: 'Recherche...'}, class: 'btn btn-default btn-lg btn-block') %>
-	  </div>
-	</div>
-<% end %>
-
+<%= render 'search_form' %>
 <div id="search-results"></div>
 
 <% if params[:view] == 'list' %>
@@ -37,4 +27,3 @@
 	  <% end %>
 	</div>
 <% end %>
-
