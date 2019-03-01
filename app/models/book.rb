@@ -120,7 +120,6 @@ class Book < ActiveRecord::Base
     end
 
     def format_fields
-      self.isbn = self.isbn.tr('-','') if isbn.present?
+      self.isbn = self.isbn.tr('-', '') if isbn.present?
     end
-
 end
