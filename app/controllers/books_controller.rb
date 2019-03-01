@@ -15,20 +15,7 @@ class BooksController < ApplicationController
   def new
     if params[:isbn].present?
       isbn = params[:isbn]
-      book = BookSearch::Amazon.new(isbn).call
-      if book.present?
-        b = BookDecorator::Base.new(book)
-        @book = Book.new(
-          isbn: b.isbn,
-          title: b.title,
-          tome: '',
-          author: b.author,
-          editor: b.editor,
-          release_date: b.release_date
-        )
-      else
-        @book = Book.new
-      end
+      @book = BookSearchJob.perform_now(isbn, "BookSearch::Amazon")
     else
       @book = Book.new
     end

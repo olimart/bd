@@ -1,32 +1,28 @@
 module BookDecorator
   class Amazon < Base
-    def initialize(book)
-      @book = book
-    end
-
     def isbn
       # ASIN equals ISBN number for books
-      @book.isbn
+      @payload.isbn
     end
 
     def title
-      @book.get('ItemAttributes/Title')
+      @payload.get('ItemAttributes/Title')
     end
 
     def author
-      if @book.get('ItemAttributes/Author').present?
-        @book.get_array('Author').join(', ')
+      if @payload.get('ItemAttributes/Author').present?
+        @payload.get_array('Author').join(', ')
       else
-        @book.get_array('Creator').join(', ')
+        @payload.get_array('Creator').join(', ')
       end
     end
 
     def editor
-      @book.get('ItemAttributes/Manufacturer') || @book.get('ItemAttributes/Publisher')
+      @payload.get('ItemAttributes/Manufacturer') || @payload.get('ItemAttributes/Publisher')
     end
 
     def release_date
-      @book.get('ItemAttributes/ReleaseDate')
+      @payload.get('ItemAttributes/ReleaseDate')
     end
   end
 end
