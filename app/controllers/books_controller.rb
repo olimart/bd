@@ -13,9 +13,10 @@ class BooksController < ApplicationController
   end
 
   def new
-      @book = BookSearchJob.perform_now(isbn, "BookSearch::Amazon")
     if new_params[:isbn].present?
       isbn = new_params[:isbn]
+      payload = BookSearchJob.perform_now(isbn, "FakeApi")
+      @book = BuildBookFromDecorator.new(payload).call
     else
       @book = Book.new
     end
