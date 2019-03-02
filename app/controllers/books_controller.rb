@@ -13,9 +13,9 @@ class BooksController < ApplicationController
   end
 
   def new
-    if params[:isbn].present?
-      isbn = params[:isbn]
       @book = BookSearchJob.perform_now(isbn, "BookSearch::Amazon")
+    if new_params[:isbn].present?
+      isbn = new_params[:isbn]
     else
       @book = Book.new
     end
@@ -35,8 +35,8 @@ class BooksController < ApplicationController
 
   def create
     # keep serie_id if both serie_id and serie name params present
-    if params[:book][:serie_id].present?
-      params[:book][:serie_attributes].delete(:name)
+    if safe_params[:serie_id].present?
+      safe_params[:serie_attributes].delete(:name)
     end
     @book = Book.new(safe_params)
 
@@ -110,6 +110,10 @@ class BooksController < ApplicationController
 
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def new_params
+      params.permit(:isbn)
     end
 
     def safe_params
