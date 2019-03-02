@@ -13,22 +13,10 @@ class BooksController < ApplicationController
   end
 
   def new
-    if params[:isbn].present?
-      isbn = params[:isbn]
-      book = BookSearch::Amazon.new(isbn).call
-      if book.present?
-        b = BookDecorator::Base.new(book)
-        @book = Book.new(
-          isbn: b.isbn,
-          title: b.title,
-          tome: '',
-          author: b.author,
-          editor: b.editor,
-          release_date: b.release_date
-        )
-      else
-        @book = Book.new
-      end
+    if new_params[:isbn].present?
+      isbn = new_params[:isbn]
+      payload = BookSearchJob.perform_now(isbn, "FakeApi")
+      @book = BuildBookFromDecorator.new(payload).call
     else
       @book = Book.new
     end
@@ -48,8 +36,8 @@ class BooksController < ApplicationController
 
   def create
     # keep serie_id if both serie_id and serie name params present
-    if params[:book][:serie_id].present?
-      params[:book][:serie_attributes].delete(:name)
+    if safe_params[:serie_id].present?
+      safe_params[:serie_attributes].delete(:name)
     end
     @book = Book.new(safe_params)
 
@@ -123,6 +111,10 @@ class BooksController < ApplicationController
 
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def new_params
+      params.permit(:isbn)
     end
 
     def safe_params

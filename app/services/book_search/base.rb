@@ -1,11 +1,17 @@
 module BookSearch
   class Base
-    def initialize(isbn)
+    def initialize(isbn, payload = nil)
       @isbn = isbn
     end
 
     def call
-      raise NotImplementedError
+      payload.present? ? render(payload) : Book.new
     end
+
+    private
+
+      def render(book)
+        BookDecorator::Base.new(book)
+      end
   end
 end

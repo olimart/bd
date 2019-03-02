@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11'
@@ -52,7 +52,6 @@ gem 'pg_search', '~> 2.1.2'
 group :development, :test do
   gem 'faker', '1.0.1'
   gem 'hirb'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
@@ -65,6 +64,13 @@ group :development do
   gem 'better_errors'
   gem 'thin'
   #gem 'rack-mini-profiler'
+end
+
+group :test do
+  gem 'minitest-reporters'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
+  gem 'rails-controller-testing'
 end
 
 group :production do

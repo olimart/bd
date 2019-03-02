@@ -1,16 +1,31 @@
 module BookDecorator
   class Base
-    def initialize(opts = {})
-      @opts = opts
+    def initialize(payload)
+      @payload = payload
     end
 
-    #class << self
-      def isbn; ""; end
-      def title; ""; end
-      def tome; ""; end
-      def author; ""; end
-      def editor; ""; end
-      def release_date; ""; end
-    #end
+    def isbn
+      @payload.try(:isbn) || ""
+    end
+
+    def title
+      @payload.try(:title) || ""
+    end
+
+    def tome
+      @payload.try(:tome) || ""
+    end
+
+    def author
+      @payload.try(:author) || ""
+    end
+
+    def editor
+      @payload.try(:editor) || ""
+    end
+
+    def release_date
+      @payload.try(:release_date) || ""
+    end
   end
 end
