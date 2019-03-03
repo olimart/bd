@@ -3,7 +3,7 @@ module BookSearch
   class Amazon < Base
     def call
       book = ::Amazon::Ecs.item_lookup(@isbn, opts = options).items.first
-      book.present? ? render(book) : Book.new
+      render(book) if book.present?
     end
 
     private
