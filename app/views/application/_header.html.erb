@@ -14,7 +14,7 @@
         <div class="form-group">
           <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
         </div>
-        <%= icon_button_link_to 'Ajouter', new_book_path, data: { toggle: 'modal', target: '#page-modal' }, class: 'btn btn-default', icon: 'plus' %>
+        <%= icon_button_link_to 'Ajouter', new_book_path(isbn: 11111), data: { toggle: 'modal', target: '#page-modal' }, class: 'btn btn-default', icon: 'plus' %>
         <%= icon_button_link_to '', books_path(view: 'list'), icon: 'align-justify', level: 'default', id: 'toggle-list-view' %>
         <%= icon_button_link_to '', books_path, icon: 'ok', level: 'default', id: 'toggle-grid-view', style: 'display:none;' %>
       </form>
