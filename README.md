@@ -1,5 +1,7 @@
 # Gestion de collection de Bandes dessinées
 
+[![Build Status](https://semaphoreci.com/api/v1/olimart/bd/branches/master/badge.svg)](https://semaphoreci.com/olimart/bd)
+
 ## Getting started
 
 1. Clone and rename `application.sample.yml`
