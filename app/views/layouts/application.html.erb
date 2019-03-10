@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>Mes BD</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 </head>
 <body>
-  <div class="container">
+  <div class='container'>
   	<%= render 'header' %>
   	<%= render 'flash' %>
     <%= yield %>

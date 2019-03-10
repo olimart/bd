@@ -5,13 +5,15 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+/log/*
+/tmp/*
+!/tmp/.keep
 /public/cache
 /public/upload
 /public/system
+/public/assets
 .DS_Store
-public/assets/
+.byebug_history
 .rvmrc
 /config/initializers/stripe.rb
 # Ignore application configuration
@@ -19,3 +21,10 @@ public/assets/
 /config/database.yml
 .env
 .idea
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

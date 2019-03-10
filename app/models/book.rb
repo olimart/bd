@@ -1,4 +1,4 @@
-class Book < ActiveRecord::Base
+class Book < ApplicationRecord
 	require 'amazon/ecs'
 
   # SEARCH

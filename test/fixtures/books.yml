@@ -1,15 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  serie: MyString
+  isbn: 111
+  serie: one
   title: MyString
   tome: MyString
   author: MyString
-  read: false
 
 two:
-  serie: MyString
+  isbn: 222
+  serie: one
   title: MyString
   tome: MyString
   author: MyString
-  read: false
+  read: true

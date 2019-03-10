@@ -1,5 +1,5 @@
 <% cache ['v1', book] do %>
-  <%= content_tag_for :div, book, class: 'col-xs-6 col-sm-6 col-md-2' do %>
+  <%= tag.div id: dom_id(book), class: 'col-xs-6 col-sm-6 col-md-2' do %>
     <%= link_to coverz(book), edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %>
     <!-- <img src="http://placehold.it/230x222"> -->
     <!-- <div class="thumbnail">

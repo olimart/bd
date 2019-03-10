@@ -1,49 +1,49 @@
 require 'test_helper'
 
-class BooksControllerTest < ActionController::TestCase
+class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)
-    @valid_params = { }
+    @valid_params = { title: 'My book', isbn: '123456', serie_attributes: { name: 'New serie' } }
   end
 
   test "should get index" do
-    get :index
+    get books_path
     assert_response :success
     assert_not_nil assigns(:books)
   end
 
   test "should get new" do
-    get :new
+    get new_book_path
     assert_response :success
   end
 
   test "should create book" do
     assert_difference('Book.count') do
-      post :create, book: @valid_params
+      post books_path, params: { book: @valid_params }, xhr: true
     end
 
-    assert_redirected_to book_path(assigns(:book))
+    assert_response :success
   end
 
   test "should show book" do
-    get :show, id: @book
+    get book_path(@book)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @book
+    get edit_book_path(@book)
     assert_response :success
   end
 
   test "should update book" do
-    patch :update, id: @book, book: { title: 'New title' }
-    assert_redirected_to book_path(assigns(:book))
-    assert_equal 'New title', @book.reload.name
+    patch book_path(@book), params: { book: { title: 'New title', serie_id: series(:one).id } }, xhr: true
+    assert_response :success
+    assert_equal 'New title', @book.reload.title
   end
 
   test "should destroy book" do
     assert_difference('Book.count', -1) do
-      delete :destroy, id: @book
+      delete book_url(@book)
     end
 
     assert_redirected_to books_path

@@ -10,7 +10,7 @@
 #
 # @return [Hash] if success
 #
-class BookSearch
+class BookLookup
   def initialize(isbn, service)
     @isbn    = isbn
     @service = service

@@ -1,9 +1,9 @@
 require 'test_helper'
 require_relative '../lib/fake_api.rb'
 
-class BookSearchTest < ActiveSupport::TestCase
+class BookLookupTest < ActiveSupport::TestCase
   test "should return a hash if success" do
-    service = BookSearch.new(111, 'fake_api').call
+    service = BookLookup.new(111, 'fake_api').call
 
     assert_equal Hash, service.class
     assert_not_nil service[:isbn]

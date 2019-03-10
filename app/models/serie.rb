@@ -1,5 +1,4 @@
-class Serie < ActiveRecord::Base
-
+class Serie < ApplicationRecord
   # ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
   has_many :books, dependent: :destroy
@@ -8,9 +7,4 @@ class Serie < ActiveRecord::Base
   # VALIDATIONS
   # ------------------------------------------------------------------------------------------------------
 	validates_uniqueness_of :name #, allow_blank: true
-
-
-  # INSTANCE METHODS
-  # ------------------------------------------------------------------------------------------------------
-
 end

@@ -1,3 +1,5 @@
+require_relative '../../test/lib/fake_api.rb'
+
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :update_reading_status]
 
@@ -15,7 +17,7 @@ class BooksController < ApplicationController
   def new
     if new_params[:isbn].present?
       isbn = new_params[:isbn]
-      payload = BookSearchJob.perform_now(isbn, "BookSearch::Amazon")
+      payload = BookLookupJob.perform_now(isbn, 'FakeApi')
       @book = Book.new(payload)
     else
       @book = Book.new
@@ -118,8 +120,8 @@ class BooksController < ApplicationController
     end
 
     def safe_params
-      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read, :release_date, :author,
-        :editor, :asin, :cover_url,
+      params.require(:book).permit(:isbn, :title, :serie_id, :tome, :read,
+        :release_date, :author, :editor, :asin, :cover_url,
         serie_attributes: [:name])
     end
 end
