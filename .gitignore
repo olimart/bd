@@ -21,6 +21,7 @@
 /config/database.yml
 .env
 .idea
+todo.md
 
 # Ignore uploaded files in development.
 /storage/*

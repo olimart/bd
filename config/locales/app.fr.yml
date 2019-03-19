@@ -1,13 +1,16 @@
 fr:
   site_name: BDVORE
-  saving: 'Sauvegarde...'
+  saving: Sauvegarde...
   close: Fermer
-  are_you_sure: "Êtes-vous sûr de vouloir continuer?"
+  are_you_sure: Êtes-vous sûr de vouloir continuer?
   helpers:
     submit:
       create: Enregistrer
       update: Enregistrer
       submit: Enregistrer
+      book:
+        create: Ajouter un livre
+        update: Enregistrer le livre
       user:
         update: Update profile
   activerecord:

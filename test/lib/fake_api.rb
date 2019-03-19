@@ -20,7 +20,8 @@ class FakeApi
       tome: tome,
       author: author,
       editor: editor,
-      release_date: release_date
+      release_date: release_date,
+      cover_url: cover_url
     )
     BookDecorator::Base.new(payload)
   end
@@ -28,7 +29,7 @@ class FakeApi
   private
 
     def title
-      "My book"
+      'My book'
     end
 
     def tome
@@ -36,14 +37,18 @@ class FakeApi
     end
 
     def author
-      "John Doe"
+      'John Doe'
     end
 
     def editor
-      "Dargaud"
+      'Dargaud'
     end
 
     def release_date
-      "2000-01-01"
+      '2000-01-01'
+    end
+
+    def cover_url
+      'https://random.image.com'
     end
 end

@@ -5,27 +5,31 @@ module BookDecorator
     end
 
     def isbn
-      @payload.try(:isbn) || ""
+      @payload.try(:isbn)
     end
 
     def title
-      @payload.try(:title) || ""
+      @payload.try(:title)
     end
 
     def tome
-      @payload.try(:tome) || ""
+      @payload.try(:tome)
     end
 
     def author
-      @payload.try(:author) || ""
+      @payload.try(:author)
     end
 
     def editor
-      @payload.try(:editor) || ""
+      @payload.try(:editor)
     end
 
     def release_date
-      @payload.try(:release_date) || ""
+      @payload.try(:release_date)
+    end
+
+    def cover_url
+      @payload.try(:cover_url)
     end
   end
 end

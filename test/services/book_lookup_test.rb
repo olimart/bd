@@ -12,5 +12,6 @@ class BookLookupTest < ActiveSupport::TestCase
     assert_not_nil service[:author]
     assert_not_nil service[:editor]
     assert_not_nil service[:release_date]
+    assert_not_nil service[:cover_url]
   end
 end
