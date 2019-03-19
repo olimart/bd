@@ -1,5 +1,3 @@
-require_relative '../../test/lib/fake_api.rb'
-
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :update_reading_status]
 
@@ -16,8 +14,7 @@ class BooksController < ApplicationController
 
   def new
     if new_params[:isbn].present?
-      isbn = new_params[:isbn]
-      payload = BookLookupJob.perform_now(isbn, 'FakeApi')
+      payload = BookLookupJob.perform_now(new_params[:isbn], 'BookSearch::AmazonScraper')
       @book = Book.new(payload)
     else
       @book = Book.new

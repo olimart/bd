@@ -2,8 +2,8 @@
 #
 # @example
 #
-#   BookSearch.new('111', 'BookSearch::Amazon')
-#   BookSearch.new('111', 'fake_api')
+#   BookLookup.new('2803610523', 'BookSearch::Amazon').call
+#   BookLookup.new('2803610523', 'fake_api').call
 #
 # @param [String] ISBN
 # @param [String] service The library to fetch book information
@@ -36,6 +36,7 @@ class BookLookup
         author: @payload.author,
         editor: @payload.editor,
         release_date: @payload.release_date,
+        cover_url: ''
       }
     end
 end
