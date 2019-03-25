@@ -3,6 +3,14 @@ fr:
   saving: Sauvegarde...
   close: Fermer
   are_you_sure: Êtes-vous sûr de vouloir continuer?
+  book:
+    add: Ajouter
+    lookup: Amazon
+    search: Rechercher
+    searching: Recherche...
+    none: Aucun livre trouvé
+    error:
+      isbn: Please enter a valid ISBN number
   helpers:
     submit:
       create: Enregistrer

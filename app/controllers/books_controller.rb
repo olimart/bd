@@ -74,17 +74,13 @@ class BooksController < ApplicationController
   def search_on_amazon
     if params[:q].present?
       begin
-        @results = Amazon::Ecs.item_search(params[:q], {
-          response_group: 'Medium',
-          sort: 'salesrank',
-          country: 'fr'}
-        )
+        @results = BookLookup.new(params[:q], 'BookSearch::AmazonScraper').call
         # puts @results.inspect
-      rescue Amazon::RequestError => e
+      rescue => e
         @error_msg = e.message
       end
     else
-      render :index, alert: 'No search criteria'
+      render :index, alert: I18n.t('book.error.isbn')
     end
   end
 

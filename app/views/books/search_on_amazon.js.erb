@@ -1,5 +1,5 @@
 <% if @results.present? %>
-  <% if @results.total_results > 0 %>
+  <% if @results.any? %>
     $("#search-results").html($("<%= j(render 'books/search_results') %>"));
   <% else %>
     $("#search-results").html($("<p class='alert alert-danger'>Aucun livre trouvé.</p>"));
