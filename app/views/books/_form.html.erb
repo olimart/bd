@@ -18,7 +18,11 @@
         </ul>
         <div class="tab-content">
           <div id="pane1" class="tab-pane active">
-            <%= f.input :serie_id, collection: Serie.order('name').map { |s| [s.name, s.id] }, include_blank: false, prompt: 'Sélectionnez une série', label: false %>
+            <%= f.input :serie_id,
+              collection: Serie.order('name').map { |s| [s.name, s.id] },
+              include_blank: false,
+              prompt: 'Sélectionnez une série',
+              label: false %>
           </div>
           <div id="pane2" class="tab-pane">
             <%= f.fields_for :serie do |s| %>

@@ -20,16 +20,6 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :serie, reject_if: :all_blank
 
 
-  # PAPERCLIP
-  # ------------------------------------------------------------------------------------------------------
-  # has_attached_file :cover,
-  #                   storage: :google_drive,
-  #                   #google_drive_credentials: "#{Rails.root}/config/google_drive.yml",
-  #                   styles: { thumb: "160x120>" }, default_url: "/images/:style/missing.png"
-  #                   #google_drive_options: {
-  #                     #folder_id: ENV['GOOGLE_DRIVE_PUBLIC_FOLDER_ID']
-  #                   #}
-
   # SCOPES
   # ------------------------------------------------------------------------------------------------------
   scope :missing_isbn, -> { where(isbn: nil) }
@@ -38,8 +28,6 @@ class Book < ApplicationRecord
 
   # CALLBACKS
   # ------------------------------------------------------------------------------------------------------
-  # after_create  :import_cover
-  # before_save :clean_serie
   before_save :sync_keywords
   before_save :format_fields
 

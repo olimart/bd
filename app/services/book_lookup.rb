@@ -2,7 +2,7 @@
 #
 # @example
 #
-#   BookLookup.new('2803610523', 'BookSearch::Amazon').call
+#   BookLookup.new('2803610523', 'BookSearch::AmazonScraper').call
 #   BookLookup.new('2803610523', 'fake_api').call
 #
 # @param [String] ISBN
