@@ -56,7 +56,12 @@ class Scraper
         split(';').first.
         gsub('Editeur : ', '').
         strip
-      cover_url = ""
+      book_cover = @request.at_css('[id="img-canvas"] img')
+        .attr('data-a-dynamic-image')
+        .split(':')
+        .second
+        .delete('\"')
+      cover_url = "https:#{book_cover}"
 
       formatted_response(title, tome, serie, author, editor, cover_url, release_date)
     end
