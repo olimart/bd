@@ -36,7 +36,7 @@ class BookLookup
         author: @payload.author,
         editor: @payload.editor,
         release_date: @payload.release_date,
-        cover_url: ''
+        cover_url: @payload.cover_url
       }
     end
 end

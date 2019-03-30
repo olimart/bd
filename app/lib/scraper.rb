@@ -23,7 +23,7 @@ class Scraper
   end
 
   def call
-    @request = Nokogiri::HTML(open(uri, 'User-Agent' => user_agent))
+    request
     runner
   rescue OpenURI::HTTPError
     {}
@@ -33,6 +33,10 @@ class Scraper
 
     def uri
       @uri ||= "#{BASE_PATH}.#{@locale}/dp/#{@isbn}"
+    end
+
+    def request
+      @request ||= Nokogiri::HTML(open(uri, 'User-Agent' => user_agent))
     end
 
     def user_agent
