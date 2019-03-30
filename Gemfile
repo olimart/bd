@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.1'
+ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.beta2'
+gem 'rails', '~> 6.0.0.beta3'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.21'
@@ -36,7 +36,6 @@ gem 'sorcery', '~> 0.13.0'
 gem 'simple_form', '~> 4.1'
 gem 'nested_form'
 gem 'figaro', '~> 1.1.1', github: 'laserlemon/figaro'
-gem 'compass-rails', '~> 3.1.0', github: "Compass/compass-rails" #, branch: "rails4-hack" #ref: "1749c06f15dc4b058427e7969810457213647fb8"
 gem 'rails_bootstrap_helper', "~> 1.0.1", github: "olimart/rails_bootstrap_helper", branch: "bs3.1"
 gem 'tabs_on_rails', "~> 3.0"
 gem 'whenever', require: false
