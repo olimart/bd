@@ -1,0 +1,45 @@
+.reading-status {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.imagebox {
+  background: black;
+  padding: 0px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  img {
+    opacity: 1;
+    transition: 0.5s opacity;
+  }
+
+  .imagebox-desc {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 0px;
+    color: white;
+    font-size: 1.2em;
+    left: 0px;
+    padding: 10px 15px;
+    position: absolute;
+    transition: 0.5s padding;
+    text-align: center;
+    width: 100%;
+  }
+
+  &:hover {
+    .imagebox-desc {
+      padding-bottom: 8%;
+    }
+    img {
+      opacity: 0.7;
+    }
+  }
+}

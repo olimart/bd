@@ -1,12 +1,12 @@
 <% cache ['v1', book] do %>
-  <%= tag.div id: dom_id(book), class: 'col-xs-6 col-sm-6 col-md-2' do %>
-    <%= link_to coverz(book), edit_book_path(book), data: {toggle: 'modal', target: '#page-modal'} %>
-    <!-- <img src="http://placehold.it/230x222"> -->
-    <!-- <div class="thumbnail">
-      <%#= coverz(book) %>
-    </div> -->
-    <% if !book.read %>
-      <p><%= link_to 'Non Lu', update_reading_status_book_path(book), method: :post, remote: true, class: 'reading-status' %></p>
-    <% end %>
+  <%= tag.div id: dom_id(book), class: 'col-xs-6 col-md-2 padding-0' do %>
+    <div class="imagebox">
+      <%= link_to coverz(book), edit_book_path(book), data: { toggle: 'modal', target: '#page-modal' } %>
+      <% if !book.read %>
+        <span class='imagebox-desc'>
+          <%= link_to t('book.unread'), update_reading_status_book_path(book), method: :post, remote: true, class: 'reading-status' %>
+        </span>
+      <% end %>
+    </div>
   <% end %>
 <% end %>

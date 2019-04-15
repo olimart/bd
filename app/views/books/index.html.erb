@@ -22,8 +22,8 @@
   </table>
 <% else %>
   <div class="row" id="books">
-	  <% @books.order('created_at DESC').each do |book| %>
-	    <%= render 'book', book: book %>
-	  <% end %>
-	</div>
+    <% @books.order('created_at DESC').each do |book| %>
+      <%= render 'book', book: book %>
+    <% end %>
+  </div>
 <% end %>

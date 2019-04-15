@@ -11,18 +11,15 @@ module BookHelper
 
   def coverz(book)
     if book.cover_url.present?
-      image_tag(book.cover_url, size: '230x250')
+      image_tag(book.cover_url, class: 'img-responsive')
   	elsif book.amazon_id.present?
-  		image_tag(amzn_image_url(book), size: '230x250')
+  		image_tag(amzn_image_url(book), class: 'img-responsive')
     else
-      image_tag('cover.jpg', size: '230x250')
-    	#holder_tag '155x212', 'cover'
-    	# "http://placehold.it/155x212&text=cover"
+      image_tag('cover.jpg', class: 'img-responsive')
     end
   end
 
   def formatted_title(book)
   	book.tome.present? ? "##{book.tome} - #{book.title}" : book.title
   end
-
 end
