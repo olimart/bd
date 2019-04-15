@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap/dist/js/bootstrap.min
+//= require bootstrap/dist/js/bootstrap.min.js
 //= require holder
 //= require_tree .
