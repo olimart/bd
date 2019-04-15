@@ -75,7 +75,6 @@ class BooksController < ApplicationController
     if params[:q].present?
       begin
         @results = BookLookup.new(params[:q], 'BookSearch::AmazonScraper').call
-        # puts @results.inspect
       rescue => e
         @error_msg = e.message
       end

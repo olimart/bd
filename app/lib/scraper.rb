@@ -46,7 +46,7 @@ class Scraper
     def runner
       title = @request.at_css('[id="productTitle"]').text.strip
       author = @request.css('[class="author notFaded"]').css('a').map { |x| x.text }.join(", ").strip
-      tome = @request.at_css('[id="seriesTitle_feature_div"]').css('span').first.text.delete("^0-9")
+      tome = @request.at_css('[id="seriesTitle_feature_div"]').css('span').first.try(:text).try(:delete, "^0-9")
       details = @request.at_css('[id="detail_bullets_id"]').at_css('[class="content"]').css("ul")
       release_date = @request.css('[class="a-size-medium a-color-secondary a-text-normal"]').last.text.delete("^0-9")
       serie = details.css('li').
