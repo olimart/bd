@@ -47,6 +47,7 @@ gem 'amazon-ecs'
 gem 'holder_rails'
 gem 'pg_search', '~> 2.1.2'
 gem 'nokogiri', '~> 1.10'
+gem 'sprockets', '~> 4.0.0.beta8' # for Heroku build
 
 group :development, :test do
   gem 'faker', '1.0.1'
