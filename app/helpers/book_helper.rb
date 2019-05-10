@@ -17,7 +17,7 @@ module BookHelper
     else
       'cover.jpg'
     end
-		image_tag(uri, class: 'img-responsive', size: '240x310')
+		image_tag(uri, class: 'img-responsive')
   end
 
   def formatted_title(book)
