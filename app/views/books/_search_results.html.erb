@@ -6,7 +6,6 @@
           <%= image_tag(@results[:cover_url], size: '172x212') %>
         <% else %>
           <%= holder_tag '172x212', 'cover' %>
-          <!-- <img src="http://placehold.it/155x212&text=cover"> -->
         <% end %>
         <div class="caption">
           <h5 class='title'><%= @results[:title].truncate(75).titleize %></h5>
