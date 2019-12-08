@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'sorcery', '~> 0.13.0'
 gem 'simple_form', '~> 4.1'
 gem 'nested_form'
 gem 'figaro', '~> 1.1.1', github: 'laserlemon/figaro'
