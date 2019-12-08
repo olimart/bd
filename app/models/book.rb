@@ -16,7 +16,7 @@ class Book < ApplicationRecord
 
   # ASSOCIATIONS
   # ------------------------------------------------------------------------------------------------------
-  belongs_to :serie, touch: true
+  belongs_to :serie, counter_cache: true # touch: true
   accepts_nested_attributes_for :serie, reject_if: :all_blank
 
 

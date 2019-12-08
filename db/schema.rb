@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_194740) do
+ActiveRecord::Schema.define(version: 2019_12_08_200554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_12_08_194740) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "books_count", default: 0, null: false
   end
 
 end
