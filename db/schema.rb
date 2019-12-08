@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_10_30_130752) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "btree_gin"
   enable_extension "isn"
   enable_extension "plpgsql"
   enable_extension "unaccent"

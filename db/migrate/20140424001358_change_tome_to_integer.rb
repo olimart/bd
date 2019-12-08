@@ -1,4 +1,4 @@
-class ChangeTomeToInteger < ActiveRecord::Migration
+class ChangeTomeToInteger < ActiveRecord::Migration[4.2]
   def change
   	add_column :books, :tome_tmp, :integer
 

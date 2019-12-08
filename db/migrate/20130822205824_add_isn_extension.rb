@@ -1,4 +1,4 @@
-class AddIsnExtension < ActiveRecord::Migration
+class AddIsnExtension < ActiveRecord::Migration[4.2]
   def change
   	enable_extension "isn"
   end
