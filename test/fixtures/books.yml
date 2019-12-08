@@ -4,13 +4,20 @@ one:
   isbn: 111
   serie: one
   title: MyString
-  tome: MyString
+  tome: 1
   author: MyString
 
 two:
   isbn: 222
-  serie: one
+  serie: two
   title: MyString
-  tome: MyString
+  tome: 1
   author: MyString
   read: true
+
+three:
+  isbn: 333
+  serie: one
+  title: MyString
+  tome: 10
+  author: MyString
