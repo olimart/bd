@@ -17,6 +17,8 @@ module BookDecorator
     end
 
     def release_date
+      @payload[:release_date].to_date
+    rescue ArgumentError
       @payload[:release_date]
     end
 
