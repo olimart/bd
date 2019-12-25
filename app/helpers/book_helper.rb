@@ -10,17 +10,22 @@ module BookHelper
   end
 
   def coverz(book)
-    uri = if book.cover_url.present?
-      book.cover_url
-  	elsif book.amazon_id.present?
-  		amzn_image_url(book)
-    else
-      'cover.jpg'
-    end
-		image_tag(uri, class: 'img-responsive')
+		image_tag(cover_url_for(book), class: 'img-responsive')
   end
 
   def formatted_title(book)
   	book.tome.present? ? "##{book.tome} - #{book.title}" : book.title
   end
+
+	private
+
+	  def cover_url_for(book)
+      if book.cover_url.present?
+        book.cover_url
+      elsif book.amazon_id.present?
+        amzn_image_url(book)
+      else
+        'cover.jpg'
+      end
+    end
 end
