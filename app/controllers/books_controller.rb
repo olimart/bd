@@ -72,15 +72,10 @@ class BooksController < ApplicationController
   end
 
   def search_on_amazon
-    if params[:q].present?
-      begin
-        @results = BookLookup.new(params[:q], 'BookSearch::AmazonScraper').call
-      rescue => e
-        @error_msg = e.message
-      end
-    else
-      render :index, alert: I18n.t('book.error.isbn')
-    end
+    render :index, alert: I18n.t('book.error.isbn') and return unless params[:q].present?
+    @results = BookLookup.new(params[:q], 'BookSearch::AmazonScraper').call
+  rescue => e
+    @error_msg = e.message
   end
 
   def update_reading_status

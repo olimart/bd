@@ -48,4 +48,16 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to books_path
   end
+
+  test 'should search on AMZN' do
+    post search_on_amazon_books_path, params: { q: '2505061637' }, xhr: true
+    assert_response :success
+    assert_match /<div class=\\'thumbnail\\'>/i, response.body
+  end
+
+  test 'should return early if missing query param while searching' do
+    post search_on_amazon_books_path, xhr: true
+    assert_response :success
+    assert_match /<p class='alert alert-danger'>/i, response.body
+  end
 end
