@@ -20,7 +20,7 @@ class ScraperTest < ActiveSupport::TestCase
     assert_equal '19', service[:tome]
     assert_equal 'Grzegorz Rosinski, Jean Van Hamme', service[:author]
     assert_equal 'Le Lombard', service[:editor]
-    assert_equal '1993', service[:release_date]
+    assert_equal 'novembre 1993', service[:release_date]
     assert_equal 'https://images-na.ssl-images-amazon.com/images/I/41e1SNiHZzL._SX375_BO1,204,203,200_.jpg', service[:cover_url]
   end
 end

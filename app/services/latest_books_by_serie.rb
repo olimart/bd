@@ -7,7 +7,10 @@ class LatestBooksBySerie
 
     # [56, [#<Book id: 257, title: "Kah-aniel"...]]
     def books
-      Book.joins(:serie).order('series.books_count DESC, tome DESC').group_by { |s| s.serie_id }.map(&:last)
+      Book.joins(:serie)
+        .order('series.books_count DESC, tome DESC')
+        .group_by { |s| s.serie_id }
+        .map(&:last)
     end
 
     def format_book(book)

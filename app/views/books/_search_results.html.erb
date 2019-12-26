@@ -8,7 +8,6 @@
           <%= holder_tag '172x212', 'cover' %>
         <% end %>
         <div class='caption'>
-          <%= @results %>
           <h5 class='title'><%= @results[:title].try(:truncate, 75).try(:titleize) %></h5>
           <p class='text-muted'><%= @results[:release_date] || '--' %></p>
           <p>
