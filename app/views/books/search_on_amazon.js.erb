@@ -1,9 +1,10 @@
+var searchResults = document.getElementById('search-results')
 <% if @results.present? %>
   <% if @results.any? %>
-    $("#search-results").html($("<%= j(render 'books/search_results') %>"));
+    searchResults.innerHTML = ("<%= j(render 'books/search_results') %>");
   <% else %>
-    $("#search-results").html($("<p class='alert alert-danger'>Aucun livre trouvé.</p>"));
+    searchResults.innerHTML = ("<p class='alert alert-danger'>Aucun livre trouvé.</p>");
   <% end %>
 <% elsif @error_msg.present? %>
-  $("#search-results").html($("<p class='alert alert-danger'><%= @error_msg %></p>"));
+  searchResults.innerHTML = ("<p class='alert alert-danger'><%= @error_msg %></p>");
 <% end %>
