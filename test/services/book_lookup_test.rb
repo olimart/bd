@@ -1,4 +1,5 @@
 require 'test_helper'
+
 require_relative '../lib/fake_book_api.rb'
 
 class BookLookupTest < ActiveSupport::TestCase
