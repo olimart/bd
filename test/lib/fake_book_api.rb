@@ -8,14 +8,16 @@
 #
 # @return [BookDecorator::Base]
 #
-class FakeApi
+class FakeBookApi
+  attr_reader :isbn
+
   def initialize(isbn)
     @isbn = isbn
   end
 
   def call
     payload = OpenStruct.new(
-      isbn: @isbn,
+      isbn: isbn,
       title: title,
       tome: tome,
       author: author,
