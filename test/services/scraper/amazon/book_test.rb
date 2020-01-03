@@ -1,8 +1,6 @@
 require 'test_helper'
 
-module Scraper
-  module Amazon
-    class BookTest < ActiveSupport::TestCase
+class Scraper::Amazon::BookTest < ActiveSupport::TestCase
   setup do
     @isbn = '2803610523'
     fixture = "./test/fixtures/amazon/book_#{@isbn}.html"
@@ -25,6 +23,4 @@ module Scraper
     assert_equal 'novembre 1993', service[:release_date]
     assert_equal 'https://images-na.ssl-images-amazon.com/images/I/41e1SNiHZzL._SX375_BO1,204,203,200_.jpg', service[:cover_url]
   end
-end
-end
 end

@@ -3,7 +3,7 @@
 # @example
 #
 #   BookLookup.new('2803610523', 'BookSearch::AmazonScraper').call
-#   BookLookup.new('2803610523', 'fake_api').call
+#   BookLookup.new('2803610523', 'fake_book_api').call
 #
 # @param [String] ISBN
 # @param [String] service The library to fetch book information
