@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'open-uri'
-
 # Ruby function to scrap book from Amazon website
 #
 # @example
@@ -16,7 +13,7 @@ require 'open-uri'
 #
 module Scraper
   module Amazon
-    class Book
+    class Book < Scraper::Base
       BASE_PATH = 'https://www.amazon'
 
       attr_reader :isbn, :locale
@@ -37,14 +34,6 @@ module Scraper
 
         def uri
           @uri ||= "#{BASE_PATH}.#{locale}/dp/#{isbn}"
-        end
-
-        def request
-          @request ||= Nokogiri::HTML(open(uri, 'User-Agent' => user_agent))
-        end
-
-        def user_agent
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
         end
 
         def runner
