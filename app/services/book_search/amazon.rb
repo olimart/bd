@@ -2,7 +2,7 @@ module BookSearch
   # AMZN Product Advertising API
   class Amazon < Base
     def call
-      book = ::Amazon::Ecs.item_lookup(@isbn, opts = options).items.first
+      book = ::Amazon::Ecs.item_lookup(isbn, opts = options).items.first
       render(book) if book.present?
     end
 

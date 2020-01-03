@@ -1,5 +1,7 @@
 module BookSearch
   class Base
+    attr_reader :isbn
+    
     def initialize(isbn, payload = nil)
       @isbn = isbn
     end
