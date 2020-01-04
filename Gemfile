@@ -44,6 +44,7 @@ gem 'amazon-ecs'
 gem 'holder_rails'
 gem 'pg_search', '~> 2.1.2'
 gem 'nokogiri', '~> 1.10'
+gem 'queenbee'
 
 group :development, :test do
   gem 'ffaker'
