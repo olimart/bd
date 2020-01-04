@@ -22,6 +22,7 @@ class PortfolioRelease
 
   def call
     books = []
+    return books if series.empty?
     releases.group_by { |r| r[:serie] }.sort.each do |serie|
       next unless series.include?(serie.first.downcase)
       serie.last.map { |book| books << book }

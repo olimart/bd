@@ -7,13 +7,15 @@ fr:
     add: Ajouter
     amzn: AMZN
     lookup: Amazon
+    none: Aucun livre trouvé
     search: Rechercher
     searching: Recherche...
-    none: Aucun livre trouvé
     tome_number: Tome %{tome}
     unread: Non lu
     error:
       isbn: Please enter a valid ISBN number
+  queenbee:
+    message: Nouveautés
   helpers:
     submit:
       create: Enregistrer
