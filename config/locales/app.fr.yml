@@ -10,6 +10,7 @@ fr:
     search: Rechercher
     searching: Recherche...
     none: Aucun livre trouvé
+    tome_number: Tome %{tome}
     unread: Non lu
     error:
       isbn: Please enter a valid ISBN number
@@ -27,3 +28,6 @@ fr:
     attributes:
       book:
         isbn: ISBN
+  release_mailer:
+    new_publications_available:
+      subject: Nouveautés dispos

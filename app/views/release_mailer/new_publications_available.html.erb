@@ -1,0 +1,9 @@
+<% @books.group_by { |r| r[:serie] }.sort.each do |serie| %>
+  <p><strong><%= serie.first %></strong></p>
+
+  <ul>
+    <% serie.last.each do |book| %>
+      <li><%= link_to t('book.tome_number', tome: book[:tome]), book[:url] %></li>
+    <% end %>
+  </ul>
+<% end %>
