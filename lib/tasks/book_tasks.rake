@@ -1,7 +1,6 @@
 require 'amazon/ecs'
 
 namespace :book do
-
   desc 'Update attributes from Amazon'
   # rake book:fetch_data_from_amazon
   task fetch_data_from_amazon: :environment do
@@ -33,5 +32,4 @@ namespace :book do
     	end
     end
   end
-
 end
