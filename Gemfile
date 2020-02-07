@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.21'
 # Use Puma as the app server
-gem 'puma', '~> 4.2'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,8 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'simple_form', '~> 4.1'
 gem 'nested_form'
 gem 'figaro', '~> 1.1.1', github: 'laserlemon/figaro'
-gem 'rails_bootstrap_helper', "~> 1.0.1", github: "olimart/rails_bootstrap_helper", branch: "bs3.1"
-gem 'tabs_on_rails', "~> 3.0"
+gem 'rails_bootstrap_helper', '~> 1.0.1', github: 'olimart/rails_bootstrap_helper', branch: 'bs3.1'
+gem 'tabs_on_rails', '~> 3.0'
 gem 'whenever', require: false
 gem 'kaminari-bootstrap'
 gem 'six'
