@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 gem 'nested_form'
 gem 'figaro', '~> 1.1.1', github: 'laserlemon/figaro'
 gem 'rails_bootstrap_helper', '~> 1.0.1', github: 'olimart/rails_bootstrap_helper', branch: 'bs3.1'
@@ -42,7 +42,7 @@ gem 'amazon-ecs'
 # gem 'paperclip'
 # gem 'paperclip-googledrive'
 gem 'holder_rails'
-gem 'pg_search', '~> 2.1.2'
+gem 'pg_search', '~> 2.3'
 gem 'nokogiri', '~> 1.10'
 gem 'queenbee'
 
@@ -65,8 +65,8 @@ end
 
 group :test do
   gem 'minitest-reporters'
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
+  gem "shoulda-context", "2.0"
+  gem "shoulda-matchers", "~> 4.0"
   gem 'rails-controller-testing'
 end
 
