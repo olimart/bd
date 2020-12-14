@@ -1,5 +1,5 @@
 class ReleaseMailer < ApplicationMailer
-  add_template_helper(ReleaseHelper)
+  helper :release
 
   def new_publications_available(books)
     @books = books

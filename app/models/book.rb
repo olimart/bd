@@ -3,7 +3,7 @@ class Book < ApplicationRecord
 
   # SEARCH
   # ------------------------------------------------------------------------------------------------------
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_by_keyword,
                   against: [:title, :tome, :author, :editor, :keywords],
                   using: {
