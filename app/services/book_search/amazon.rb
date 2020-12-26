@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BookSearch
   # AMZN Product Advertising API
   class Amazon < Base
@@ -10,8 +12,8 @@ module BookSearch
 
       def options
         {
-          response_group: 'Medium',
-          country: 'fr'
+          response_group: "Medium",
+          country: "fr"
         }
       end
 

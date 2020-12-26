@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'open-uri'
+require "nokogiri"
+require "open-uri"
 
 module Scraper
   class Base
-
     private
 
       def uri
@@ -13,7 +12,7 @@ module Scraper
       end
 
       def request
-        @request ||= Nokogiri::HTML(open(uri, 'User-Agent' => user_agent))
+        @request ||= Nokogiri::HTML(URI.open(uri, "User-Agent" => user_agent))
       end
 
       def user_agent

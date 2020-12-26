@@ -14,17 +14,16 @@
 module Scraper
   module Amazon
     class Book < Scraper::Base
-      BASE_PATH = 'https://www.amazon'
+      BASE_PATH = "https://www.amazon"
 
       attr_reader :isbn, :locale
 
-      def initialize(isbn, locale = 'fr')
+      def initialize(isbn, locale = "fr")
         @isbn = isbn
         @locale = locale
       end
 
       def call
-        request
         runner
       rescue OpenURI::HTTPError
         {}
