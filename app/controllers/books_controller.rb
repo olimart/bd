@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   def new
     if new_params[:isbn].present?
-      payload = BookLookupJob.perform_now(new_params[:isbn], 'BookSearch::AmazonScraper')
+      payload = BookLookupJob.perform_now(new_params[:isbn], "BookSearch::AmazonScraper")
       @book = Book.new(payload)
     else
       @book = Book.new
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to books_url, notice: 'Book was successfully created.' }
+        format.html { redirect_to books_url, notice: "Book was successfully created." }
         format.js
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(safe_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: "Book was successfully updated." }
         format.js
       else
         format.html { render :edit }
@@ -72,10 +72,10 @@ class BooksController < ApplicationController
   end
 
   def search_on_amazon
-    render :index, alert: I18n.t('book.error.isbn') and return unless params[:q].present?
+    render :index, alert: t("book.error.isbn") and return unless params[:q].present?
     @results = BookLookup.new(
       params[:q],
-      params[:scraper].presence || 'BookSearch::AmazonScraper'
+      params[:scraper].presence || "BookSearch::AmazonScraper"
     ).call
   rescue => e
     @error_msg = e.message

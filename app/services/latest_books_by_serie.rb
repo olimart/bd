@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class LatestBooksBySerie
   def call
-    books.map { |array_of_books_grouped_by_serie| format_book(array_of_books_grouped_by_serie.first) }
+    books.map { |array_of_books_grouped_by_serie|
+      format_book(array_of_books_grouped_by_serie.first) }
   end
 
   private
@@ -8,7 +11,7 @@ class LatestBooksBySerie
     # [56, [#<Book id: 257, title: "Kah-aniel"...]]
     def books
       Book.joins(:serie)
-        .order('series.books_count DESC, tome DESC')
+        .order("series.books_count DESC, tome DESC")
         .group_by { |s| s.serie_id }
         .map(&:last)
     end
