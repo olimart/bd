@@ -55,6 +55,13 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_match /<div class=\\'thumbnail\\'>/i, response.body
   end
 
+  test 'should search on AMZN JS' do
+    post search_on_amazon_books_path, params: { q: '2505061637', scraper: 'fake_' }, xhr: true
+    end
+    assert_response :success
+    assert_match /<div class=\\'thumbnail\\'>/i, response.body
+  end
+
   test 'should return early if missing query param while searching' do
     post search_on_amazon_books_path, xhr: true
     assert_response :success

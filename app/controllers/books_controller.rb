@@ -73,7 +73,10 @@ class BooksController < ApplicationController
 
   def search_on_amazon
     render :index, alert: I18n.t('book.error.isbn') and return unless params[:q].present?
-    @results = BookLookup.new(params[:q], 'BookSearch::AmazonScraper').call
+    @results = BookLookup.new(
+      params[:q],
+      params[:scraper].presence || 'BookSearch::AmazonScraper'
+    ).call
   rescue => e
     @error_msg = e.message
   end
