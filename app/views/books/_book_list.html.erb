@@ -4,5 +4,5 @@
   <td><%= book.serie.try(:name) %></td>
   <td><%= book.author.titleize if book.author.present? %></td>
   <td><%= book.editor.titleize if book.editor.present? %></td>
-  <td><%= book.release_date.to_date if book.release_date.present? %></td>
+  <td><%= book.release_date&.to_date %></td>
 <% end %>

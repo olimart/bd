@@ -1,10 +1,10 @@
 var searchResults = document.getElementById('search-results')
 <% if @results.present? %>
   <% if @results.any? %>
-    searchResults.innerHTML = ("<%= j(render 'books/search_results') %>");
+    searchResults.innerHTML = "<%= j(render 'books/search_results') %>"
   <% else %>
-    searchResults.innerHTML = ("<p class='alert alert-danger'>Aucun livre trouvé.</p>");
+    searchResults.innerHTML = "<p class='alert alert-danger'>Aucun livre trouvé.</p>"
   <% end %>
 <% elsif @error_msg.present? %>
-  searchResults.innerHTML = ("<p class='alert alert-danger'><%= @error_msg %></p>");
+  searchResults.innerHTML = '<p class="alert alert-danger"><%= j @error_msg %></p>'
 <% end %>

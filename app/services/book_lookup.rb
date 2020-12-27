@@ -11,13 +11,15 @@
 # @return [Hash] if success
 #
 class BookLookup
+  attr_reader :isbn, :service
+
   def initialize(isbn, service)
     @isbn    = isbn
     @service = service
   end
 
   def call
-    @payload = service_name.new(@isbn).call
+    @payload = service_name.new(isbn).call
     # TODO: service should return success? Else return {}
     format_response
   end
@@ -25,7 +27,7 @@ class BookLookup
   private
 
     def service_name
-      @service.classify.constantize
+      service.classify.constantize
     end
 
     def format_response

@@ -14,17 +14,16 @@
 module Scraper
   module Amazon
     class Book < Scraper::Base
-      BASE_PATH = 'https://www.amazon'
+      BASE_PATH = "https://www.amazon"
 
       attr_reader :isbn, :locale
 
-      def initialize(isbn, locale = 'fr')
+      def initialize(isbn, locale = "fr")
         @isbn = isbn
         @locale = locale
       end
 
       def call
-        request
         runner
       rescue OpenURI::HTTPError
         {}
@@ -40,19 +39,25 @@ module Scraper
           title = request.at_css('[id="productTitle"]').text.strip
           author = request.css('[class="author notFaded"]').css('a').map { |x| x.text }.join(", ").strip
           tome = request.at_css('[id="seriesTitle_feature_div"]').css('span').first.try(:text).try(:delete, "^0-9")
-          details = request.at_css('[id="detail_bullets_id"]').at_css('[class="content"]').css("ul")
-          release_date = request.css('[class="a-size-medium a-color-secondary a-text-normal"]').last.text.delete('/w-–').try(:strip)
-          serie = details.css('li').
-            select {|x| x.text.include?('Collection')}.
-            map { |x| x.text }.first.
-            gsub('Collection : ', '').
-            strip
-          editor = details.css('li').
-            select {|x| x.text.include?('Editeur')}.
-            map { |x| x.text }.first.
-            split(';').first.
-            gsub('Editeur : ', '').
-            strip
+          details = request.at_css('[id="detailBullets_feature_div"]').css("ul")
+          release_date = request.css('[class="a-size-medium a-color-secondary a-text-normal"]')
+            .last
+            &.text
+            &.delete('/w-–')
+            &.strip
+          serie = details.css('li')
+            .select { |x| /collection/i.match(x.text) }
+            .map { |x| x.text }
+            .first
+            &.gsub('Collection : ', '')
+            &.strip
+          editor = details.css('li')
+            .select { |x| /(é|e)diteur/i.match(x.text) }
+            .map { |x| x.text }
+            .first
+            &.split(':')
+            &.last
+            &.strip
           book_cover = request.at_css('[id="img-canvas"] img')
             .attr('data-a-dynamic-image')
             .split(':')

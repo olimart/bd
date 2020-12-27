@@ -39,8 +39,6 @@ gem "whenever", require: false
 gem "kaminari-bootstrap"
 gem "six"
 gem "amazon-ecs"
-# gem "paperclip"
-# gem "paperclip-googledrive"
 gem "holder_rails"
 gem "pg_search", "~> 2.3"
 gem "nokogiri", "~> 1.10"

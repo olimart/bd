@@ -31,7 +31,7 @@ class FakeBookApi
   private
 
     def title
-      'My book'
+      "My book"
     end
 
     def tome
@@ -39,18 +39,18 @@ class FakeBookApi
     end
 
     def author
-      'John Doe'
+      "John Doe"
     end
 
     def editor
-      'Dargaud'
+      "Dargaud"
     end
 
     def release_date
-      '2000-01-01'
+      "2000-01-01"
     end
 
     def cover_url
-      'https://random.image.com'
+      "https://random.image.com"
     end
 end
