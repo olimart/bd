@@ -1,6 +1,7 @@
 require "test_helper"
 
 require_relative "../lib/fake_book_api.rb"
+require_relative "../lib/fake_book_api_raising.rb"
 
 class BookLookupTest < ActiveSupport::TestCase
   test "should return a hash if success" do
@@ -17,20 +18,8 @@ class BookLookupTest < ActiveSupport::TestCase
   end
 
   test "should handle error" do
-    service = BookLookup.new(111, "fake_book_api_raising").call
-    assert_equal Hash, service.class
+    assert_raises StandardError, "boom" do
+      BookLookup.new(111, "fake_book_api_raising").call
+    end
   end
 end
-
-  class FakeBookApiRaising
-    attr_reader :isbn
-
-    def initialize(isbn)
-      @isbn = isbn
-    end
-
-    def call
-      raise
-    end
-  end
-#end
