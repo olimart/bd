@@ -1,35 +1,37 @@
 module BookDecorator
   class Base
+    attr_reader :payload
+
     def initialize(payload)
       @payload = payload
     end
 
     def isbn
-      @payload.try(:isbn)
+      payload&.isbn
     end
 
     def title
-      @payload.try(:title)
+      payload&.title
     end
 
     def tome
-      @payload.try(:tome)
+      payload&.tome
     end
 
     def author
-      @payload.try(:author)
+      payload&.author
     end
 
     def editor
-      @payload.try(:editor)
+      payload&.editor
     end
 
     def release_date
-      @payload.try(:release_date)
+      payload&.release_date
     end
 
     def cover_url
-      @payload.try(:cover_url)
+      payload&.cover_url
     end
   end
 end

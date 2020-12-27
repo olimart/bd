@@ -1,37 +1,37 @@
 module BookDecorator
   class AmazonScraper < Base
     def isbn
-      @payload[:isbn]
+      payload[:isbn]
     end
 
     def title
-      @payload[:title]
+      payload[:title]
     end
 
     def author
-      @payload[:author]
+      payload[:author]
     end
 
     def editor
-      @payload[:editor]
+      payload[:editor]
     end
 
     def release_date
-      @payload[:release_date].to_date
+      payload[:release_date].to_date
     rescue ArgumentError
-      @payload[:release_date]
+      payload[:release_date]
     end
 
     def tome
-      @payload[:tome]
+      payload[:tome]
     end
 
     def serie
-      @payload[:serie]
+      payload[:serie]
     end
 
     def cover_url
-      @payload[:cover_url]
+      payload[:cover_url]
     end
   end
 end
