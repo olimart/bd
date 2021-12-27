@@ -5,13 +5,13 @@ class Book < ApplicationRecord
   # ------------------------------------------------------------------------------------------------------
   include PgSearch::Model
   pg_search_scope :search_by_keyword,
-                  against: [:title, :tome, :author, :editor, :keywords],
-                  using: {
-                    tsearch: {
-                      prefix: true # match any characters
-                    }
-                  },
-                  ignoring: :accents
+    against: [:title, :tome, :author, :editor, :keywords],
+    using: {
+      tsearch: {
+        prefix: true # match any characters
+      }
+    },
+    ignoring: :accents
 
 
   # ASSOCIATIONS
@@ -51,8 +51,8 @@ class Book < ApplicationRecord
   end
 
   def import_cover
-    if asin.present? && !cover.present?
-      book = Amazon::Ecs.item_lookup(asin, opts = {response_group: 'Medium', country: 'fr'}).items.first
+    if asin.present? && cover.blank?
+      book = lookup_book_on_amazon
       if book.present?
         large_image_url = book.get('LargeImage/URL') if book.get_hash('LargeImage')
         self.cover = URI.parse(large_image_url)
@@ -99,15 +99,22 @@ class Book < ApplicationRecord
 
   private
 
-    def sync_keywords
-      keywords = []
-      keywords << "non lu" if !self.read
-      keywords << "tome #{self.tome}" if self.tome.present?
-      keywords << serie.name.downcase.to_s if serie_id.present?
-      self.keywords = keywords.join(", ")
-    end
+	  def sync_keywords
+			keywords = []
+			keywords << "non lu" if !self.read
+			keywords << "tome #{self.tome}" if self.tome.present?
+			keywords << serie.name.downcase.to_s if serie_id.present?
+			self.keywords = keywords.join(", ")
+		end
 
-    def format_fields
-      self.isbn = self.isbn.tr('-', '') if isbn.present?
-    end
+		def format_fields
+			self.isbn = self.isbn.tr('-', '') if isbn.present?
+		end
+
+		def lookup_book_on_amazon
+			Amazon::Ecs.item_lookup(
+				asin,
+				opts = {response_group: 'Medium', country: 'fr'}
+			).items.first
+		end
 end
