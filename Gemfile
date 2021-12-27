@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "3.0.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 6.1.0"
+gem "rails", "~> 6.1.0", ">= 6.1.4.1"
 # Use postgresql as the database for Active Record
 gem "pg"
 # Use Puma as the app server
@@ -41,7 +41,7 @@ gem "six"
 gem "amazon-ecs"
 gem "holder_rails"
 gem "pg_search", "~> 2.3"
-gem "nokogiri", "~> 1.10"
+gem "nokogiri"
 gem "queenbee"
 
 group :development, :test do
@@ -53,8 +53,6 @@ end
 group :development do
   gem "web-console", ">= 4.1.0"
   gem "listen", "~> 3.3"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
   gem "letter_opener"
   gem "better_errors"
   # gem "rack-mini-profiler"
