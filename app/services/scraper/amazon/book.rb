@@ -38,7 +38,7 @@ module Scraper
         def runner
           title = request.at_css('[id="productTitle"]').text.strip
           author = request.css('[class="author notFaded"]').css('a').map { |x| x.text }.join(", ").strip
-          tome = request.at_css('[id="seriesTitle_feature_div"]').css('span').first.try(:text).try(:delete, "^0-9")
+          tome = title.split('tome ').last&.delete("^0-9")
           details = request.at_css('[id="detailBullets_feature_div"]').css("ul")
           release_date = request.css('[class="a-size-medium a-color-secondary a-text-normal"]')
             .last
@@ -57,6 +57,8 @@ module Scraper
             .first
             &.split(':')
             &.last
+            &.gsub(/ *\n+/, '')
+            &.squish
             &.strip
           book_cover = request.at_css('[id="img-canvas"] img')
             .attr('data-a-dynamic-image')
