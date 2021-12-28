@@ -89,7 +89,6 @@ GEM
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.0.1)
     chronic (0.10.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -101,6 +100,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    debug (1.4.0)
+      irb (>= 1.3.6)
+      reline (>= 0.2.7)
     erubi (1.10.0)
     exception_notification (4.4.0)
       actionmailer (>= 4.0, < 7)
@@ -115,6 +117,9 @@ GEM
       railties (>= 3.1.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    io-console (0.5.9)
+    irb (1.4.1)
+      reline (>= 0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -214,6 +219,8 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    reline (0.3.0)
+      io-console (~> 0.5)
     ruby-progressbar (1.10.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -275,8 +282,8 @@ DEPENDENCIES
   amazon-ecs
   better_errors
   bootsnap (>= 1.4.4)
-  byebug
   coffee-rails (~> 4.2.2)
+  debug
   exception_notification (~> 4.4)
   ffaker
   figaro (~> 1.2)!

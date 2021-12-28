@@ -47,7 +47,7 @@ gem "queenbee"
 group :development, :test do
   gem "ffaker"
   gem "hirb"
-  gem "byebug"
+  gem "debug"
 end
 
 group :development do
