@@ -43,6 +43,7 @@ gem "holder_rails"
 gem "pg_search", "~> 2.3"
 gem "nokogiri"
 gem "queenbee"
+gem "stimulus-rails"
 
 group :development, :test do
   gem "ffaker"
