@@ -67,7 +67,8 @@ group :test do
 end
 
 group :production do
-  gem "exception_notification", "~> 4.4"
+  gem "sentry-ruby"
+  gem "sentry-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
