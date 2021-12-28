@@ -2,11 +2,19 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :update_reading_status]
 
   def index
-    if params[:query].present?
-      @books = Book.search_by_keyword(params[:query]).limit(30)
+    @list_view = params[:view] == 'list'
+    @books = if params[:query].present?
+      Book
+        .search_by_keyword(params[:query])
+        .limit(30)
     else
-      @books = Book.all
+      Book
+        .all
+        .order('created_at DESC')
     end
+    @series = @books
+      .joins(:serie)
+      .order('series.name', :tome) if @list_view
   end
 
   def show
