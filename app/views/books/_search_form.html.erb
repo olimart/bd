@@ -1,18 +1,19 @@
-<%= form_tag({
-  controller: 'books',
-  action: 'search_on_amazon' },
-  method: :post,
-  remote: true,
-  class: 'global-search',
-  style: 'display:none;') do %>
-  <div class='row'>
-	  <div class='col-xs-7 col-md-10'>
-	    <%= text_field_tag :q, '', placeholder: 'ISBN number', class: 'form-control input-lg' %>
-	  </div>
-	  <div class='col-xs-5 col-md-2'>
-	    <%= submit_tag t('book.search'),
-          data: { disable_with: t('book.searching') },
-          class: 'btn btn-default btn-lg btn-block' %>
-	  </div>
-	</div>
-<% end %>
+<div class="hidden" data-toggle-target="toggleable">
+  <%= form_tag({
+    controller: 'books',
+    action: 'search_on_amazon'},
+    remote: true,
+    class: 'global-search'
+  ) do %>
+    <div class='row'>
+  	  <div class='col-xs-7 col-md-10'>
+  	    <%= text_field_tag :q, '', placeholder: 'ISBN number', class: 'form-control input-lg' %>
+  	  </div>
+  	  <div class='col-xs-5 col-md-2'>
+  	    <%= submit_tag t('book.search'),
+            data: { disable_with: t('book.searching') },
+            class: 'btn btn-default btn-lg btn-block' %>
+  	  </div>
+  	</div>
+  <% end %>
+</div>

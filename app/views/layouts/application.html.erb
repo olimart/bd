@@ -13,7 +13,7 @@
   <%= csp_meta_tag %>
 </head>
 <body>
-  <div class='container-fluid'>
+  <div class='container-fluid' data-controller='toggle' data-toggle-hidden-class='hidden'>
   	<%= render 'header' %>
   	<%= render 'flash' %>
     <%= yield %>
