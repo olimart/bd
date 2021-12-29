@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 6.1.0", ">= 6.1.4.1"
+gem "rails", "~> 7.0.0"
 # Use postgresql as the database for Active Record
 gem "pg"
 # Use Puma as the app server
@@ -18,13 +18,13 @@ gem "turbo-rails"
 # Use jquery as the JavaScript library
 gem "jquery-rails"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.7"
+gem "jbuilder"
 
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.4.4", require: false
+gem "bootsnap", require: false
 
 gem "simple_form", "~> 5.0"
 gem "nested_form"
@@ -50,8 +50,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "web-console", ">= 4.1.0"
-  gem "listen", "~> 3.3"
+  gem "web-console"
   gem "letter_opener"
   gem "better_errors"
   # gem "rack-mini-profiler"
@@ -66,6 +65,3 @@ end
 
 group :production do
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
