@@ -1,47 +1,42 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><%= t 'site_name' %></a>
-    </div>
-    <div class="navbar-collapse collapse" style="height: 1px;">
-      <ul class="nav navbar-nav navbar-right">
+<header class="bd-header bg-dark d-flex align-items-stretch border-bottom border-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <%= icon_link_to t('book.lookup'),
-              '#',
-              icon: 'search',
-              data: { action: 'toggle#toggle' } %>
-        </li>
-        <li>
-          <%= icon_link_to t('book.add'),
-              new_book_path,
-              data: { toggle: 'modal', target: '#page-modal' },
-              icon: 'plus' %>
-        </li>
-        <li>
-          <%= icon_link_to '',
-              books_path(view: 'list'),
-              icon: 'align-justify',
-              id: 'toggle-list-view' %>
-        </li>
-        <li>
-          <%= icon_link_to '',
-              books_path,
-              icon: 'ok',
-              id: 'toggle-grid-view',
-              style: 'display:none;' %>
+          <%= link_to t("site_name"), "/", class: "nav-link px-2 text-secondary" %>
         </li>
       </ul>
-      <form id="global-search" action="<%= books_path %>" method="GET" class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" placeholder="XIII, Tome 5, Non lu..." class="form-control" name="query"/>
-        </div>
-      </form>
+
+      <%= form_with url: books_path,
+          method: :get,
+          id: "global-search",
+          class: "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" do |form| %>
+        <%= form.search_field :query,
+            class: "form-control form-control-dark",
+            placeholder: "XIII, Tome 5, Non lu...",
+            "aria-label" => "Search" %>
+      <% end %>
+
+      <div class="text-end">
+        <%= icon_button_link_to t('book.lookup'),
+            '#',
+            icon: 'search',
+            level: 'warning',
+            class: 'me-2',
+            data: { action: 'toggle#toggle' } %>
+        <%= icon_button_link_to t('book.add'),
+            new_book_path,
+            level: 'outline-light',
+            class: 'me-2',
+            data: { toggle: 'modal', target: '#page-modal' },
+            icon: 'plus' %>
+        <%= icon_button_link_to '',
+            books_path(view: 'list'),
+            level: 'outline-light',
+            class: 'me-2',
+            icon: 'list-ul',
+            id: 'toggle-list-view' %>
+      </div>
     </div>
   </div>
-</nav>
+</header>
