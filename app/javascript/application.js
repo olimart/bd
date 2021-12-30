@@ -14,6 +14,4 @@ window.Turbo = Turbo
 // Rails.start()
 // ActiveStorage.start()
 
-import "./src/jquery"
-
 import "./controllers"
