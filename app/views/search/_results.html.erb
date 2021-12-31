@@ -1,0 +1,35 @@
+<% if @book.present? %>
+  <div class="row row-cols-1 row-cols-md-4 g-4 my-2">
+    <div class="col">
+      <div class="card">
+        <% if @book[:cover_url].present? %>
+          <%= image_tag @book[:cover_url], size: "172x212", class: "card-img-top" %>
+        <% else %>
+          <%= holder_tag "172x212", "cover" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= @book[:title].try(:truncate, 75).try(:titleize) %>
+          </h5>
+          <p class="card-text">
+            <%= @book[:release_date] || "--" %>
+          </p>
+          <%= link_to t("book.add"),
+              new_book_path(isbn: @book[:isbn]),
+              data: { bs_toggle: "modal", bs_target: "#page-modal" },
+              class: "btn btn-outline-secondary" %>
+          <%= link_to t("book.amzn"),
+              amzn_book_url(@book[:isbn]),
+              class: "btn btn-warning",
+              target: 'blank' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <% if @error_msg.present? %>
+    <p class="alert alert-danger"><%= @error_msg %></p>
+  <% else %>
+    <p class="alert alert-warning"><%= t "book.none" %>.</p>
+  <% end %>
+<% end %>

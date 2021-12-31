@@ -1,5 +1,4 @@
 Bd::Application.routes.draw do
-
   resources :books do
     collection do
       post :search_on_amazon
@@ -11,6 +10,6 @@ Bd::Application.routes.draw do
     end
   end
 
-  root 'books#index'
-
+  post "search/amazon"
+  root "books#index"
 end
