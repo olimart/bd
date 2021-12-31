@@ -18,6 +18,6 @@ two:
 three:
   isbn: 333
   serie: one
-  title: MyString
+  title: Tome 5
   tome: 10
   author: MyString

@@ -13,12 +13,12 @@
 
     <tbody>
       <% @series.each do |book| %>
-        <%= render 'book_list', book: book %>
+        <%= render "book_list", book: book %>
       <% end %>
     </tbody>
   </table>
 <% else %>
-  <div class="row" id="books">
+  <div class="row" id="turbo-books">
     <%= render @books %>
   </div>
 <% end %>

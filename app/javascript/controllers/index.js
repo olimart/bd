@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-// import HelloController from "./hello_controller"
-// application.register("hello", HelloController)
-
 import { Toggle } from "stimulus-yafoy"
 application.register('toggle', Toggle)
+
+import SearchController from "./search_controller.js"
+application.register("search", SearchController)

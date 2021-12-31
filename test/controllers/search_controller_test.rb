@@ -22,4 +22,11 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_match /<p class="alert alert-warning">/i, response.body
   end
+
+  test "should post books" do
+    post search_books_url, params: { query: "tome 5" }, xhr: true
+    assert_response :success
+    assert_equal 1, assigns(:books).size
+    assert_match /<div class="imagebox">/i, response.body
+  end
 end
