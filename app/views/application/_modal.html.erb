@@ -1,9 +1,7 @@
-<div id="page-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="page-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-body">
-        <div class="spinner"></div>
-      </div>
+      <%= render "books/form", locals: { book: @book } %>
     </div>
   </div>
 </div>
