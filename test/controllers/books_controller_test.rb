@@ -24,7 +24,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
       post books_path, params: { book: @valid_params }, xhr: true
     end
 
-    assert_response :success
+    assert_redirected_to books_url
   end
 
   test "should show book" do
@@ -38,8 +38,8 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update book" do
-    patch book_path(@book), params: { book: { title: 'New title', serie_id: series(:one).id } }, xhr: true
-    assert_response :success
+    patch book_path(@book), params: { book: { title: 'New title', serie_id: series(:one).id } }
+    assert_redirected_to books_url
     assert_equal 'New title', @book.reload.title
   end
 
