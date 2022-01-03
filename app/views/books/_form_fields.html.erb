@@ -3,7 +3,7 @@
     <%= f.input :title, autofocus: true %>
   </div>
   <div class="col-sm-6 col-md-2">
-    <%= f.input :tome %>
+    <%= f.input :tome, input_html: { min: 0 } %>
   </div>
 </div>
 <div class="row">

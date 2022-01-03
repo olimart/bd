@@ -6,7 +6,9 @@ fr:
   book:
     add: Ajouter
     amzn: AMZN
+    edit: Édition
     lookup: Amazon
+    new: Nouvelle BD
     none: Aucun livre trouvé
     search: Rechercher
     searching: Recherche...
@@ -22,8 +24,8 @@ fr:
       update: Enregistrer
       submit: Enregistrer
       book:
-        create: Ajouter un livre
-        update: Enregistrer le livre
+        create: Ajouter une BD
+        update: Enregistrer
       user:
         update: Update profile
   activerecord:

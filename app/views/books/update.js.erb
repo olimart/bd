@@ -1,6 +1,0 @@
-<% if @book.errors.any? %>
-  $('#error-container').html("<%= j @book.errors.full_messages.to_sentence %>");
-<% else %>
-  $("#page-modal").modal('hide');
-  $("#<%= dom_id(@book) %>").replaceWith($("<%= j(params['list_view'].present? ? render('books/book_list', book: @book) : render(@book)) %>"));
-<% end %>

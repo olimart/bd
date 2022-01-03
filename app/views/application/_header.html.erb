@@ -17,24 +17,24 @@
       <% end %>
 
       <div class="text-end">
-        <%= icon_button_link_to t('book.lookup'),
-            '#',
-            icon: 'search',
-            level: 'warning',
-            class: 'me-2',
-            data: { action: 'toggle#toggle' } %>
-        <%= icon_button_link_to t('book.add'),
+        <%= icon_button_link_to t("book.lookup"),
+            "#",
+            icon: "search",
+            level: "warning",
+            class: "me-2",
+            data: { action: "toggle#toggle" } %>
+        <%= icon_button_link_to t("book.add"),
             new_book_path,
-            level: 'outline-light',
-            class: 'me-2',
-            data: { toggle: 'modal', target: '#page-modal' },
-            icon: 'plus' %>
-        <%= icon_button_link_to '',
-            books_path(view: 'list'),
-            level: 'outline-light',
-            class: 'me-2',
-            icon: 'list-ul',
-            id: 'toggle-list-view' %>
+            level: "outline-light",
+            class: "me-2",
+            data: { bs_toggle: "modal", bs_target: "#page-modal" },
+            icon: "plus" %>
+        <%= icon_button_link_to "",
+            books_path(view: "list"),
+            level: "outline-light",
+            class: "me-2",
+            icon: "list-ul",
+            id: "toggle-list-view" %>
       </div>
     </div>
   </div>

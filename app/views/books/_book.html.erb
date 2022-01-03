@@ -1,14 +1,12 @@
 <% cache ["v1", book] do %>
   <%= tag.div id: dom_id(book), class: "col-xs-6 col-md-2 padding-0" do %>
     <div class="imagebox">
-      <%= link_to coverz(book), edit_book_path(book),
-          data: { bs_toggle: "modal", bs_target: "#page-modal" } %>
+      <%= link_to coverz(book), edit_book_path(book) %>
       <% if !book.read %>
         <span class="imagebox-desc">
           <%= link_to t("book.unread"),
               update_reading_status_book_path(book),
-              method: :post,
-              data: { turbo_remote: true },
+              data: { turbo_method: :post, turbo_remote: true },
               class: "reading-status" %>
         </span>
       <% end %>

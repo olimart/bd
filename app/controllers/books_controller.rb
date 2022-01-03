@@ -9,6 +9,7 @@ class BooksController < ApplicationController
     @series = @books
       .joins(:serie)
       .order("series.name", :tome) if @list_view
+    @book = Book.new
   end
 
   def show
@@ -30,8 +31,7 @@ class BooksController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.html { render layout: false }
-      format.js { render layout: false }
+      format.html
     end
   end
 
@@ -44,11 +44,24 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to books_url, notice: "Book was successfully created." }
-        format.js
+        format.html { redirect_to books_url }
+        # Need a way to auto-close modal window
+        # format.turbo_stream {
+        #   render turbo_stream: turbo_stream.prepend(
+        #     "turbo-books",
+        #     partial: "books/book",
+        #     locals: { book: @book }
+        #   )
+        # }
       else
-        format.html { render :new }
-        format.js
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.replace(
+            "new_book",
+            partial: "books/form",
+            locals: { book: @book }
+          )
+        }
       end
     end
   end
@@ -56,11 +69,17 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(safe_params)
-        format.html { redirect_to @book, notice: "Book was successfully updated." }
-        format.js
+        format.html { redirect_to books_url }
+        # format.turbo_stream {
+        #   render turbo_stream: turbo_stream.replace(
+        #     "book_#{@book.id}",
+        #     partial: "books/book",
+        #     locals: { book: @book }
+        #   )
+        # }
       else
-        format.html { render :edit }
-        format.js
+        format.html { render :edit, status: :unprocessable_entity }
+        # format.turbo_stream {}
       end
     end
   end
@@ -75,6 +94,16 @@ class BooksController < ApplicationController
 
   def update_reading_status
     @book.update_reading_status
+
+    respond_to do |format|
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(
+          "book_#{@book.id}",
+          partial: "books/book",
+          locals: { book: @book }
+        )
+      }
+    end
   end
 
   def import
