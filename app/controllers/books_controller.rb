@@ -8,7 +8,8 @@ class BooksController < ApplicationController
       .order("created_at DESC")
     @series = @books
       .joins(:serie)
-      .order("series.name", :tome) if @list_view
+      .order(:name, :tome)
+      .reverse if @list_view
     @book = Book.new
   end
 
