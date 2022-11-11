@@ -35,6 +35,11 @@
             class: "me-2",
             icon: "list-ul",
             id: "toggle-list-view" %>
+        <%= icon_button_link_to "",
+            export_books_path(format: :csv),
+            level: "outline-light",
+            class: "me-2",
+            icon: "download" %>
       </div>
     </div>
   </div>

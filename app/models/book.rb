@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+	require 'csv'
 	require 'amazon/ecs'
 
   # SEARCH
@@ -70,25 +71,27 @@ class Book < ApplicationRecord
     end
   end
 
-  def to_csv
-		headers = %w[title tome serie read author editor isbn release_date cover_url created_at].join(";")
-		books = ""
-		books << headers
-		Book.order("created_at DESC").find_each do |b|
-		  books << [
-		    b.title,
-		    b.tome,
-		    b.serie.name,
-		    b.read,
-		    b.author,
-		    b.editor,
-		    b.isbn,
-		    b.release_date,
-		    b.cover_url,
-		    "#{b.created_at}\n"
-		  ].join(";")
+	def self.to_csv
+		books = all.order("created_at DESC")
+		headers = %w[title tome serie read author editor isbn release_date cover_url created_at]
+
+		CSV.generate do |csv|
+		  csv << column_names
+		  books.each do |b|
+				csv << [
+			    b.title,
+			    b.tome,
+			    b.serie.name,
+			    b.read,
+			    b.author,
+			    b.editor,
+			    b.isbn,
+			    b.release_date,
+			    b.cover_url,
+			    b.created_at
+			  ]
+		  end
 		end
-		puts books
 	end
 
   private
