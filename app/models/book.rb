@@ -76,7 +76,7 @@ class Book < ApplicationRecord
 		headers = %w[title tome serie read author editor isbn release_date cover_url created_at]
 
 		CSV.generate do |csv|
-		  csv << column_names
+		  csv << headers
 		  books.each do |b|
 				csv << [
 			    b.title,
