@@ -121,6 +121,13 @@ class BooksController < ApplicationController
     end
   end
 
+  def export
+    respond_to do |format|
+      format.html
+      format.csv { send_data Book.to_csv, filename: "#{Time.current.strftime("%Y%m%d")}_books.csv"}
+    end
+  end
+
   private
 
     def set_book

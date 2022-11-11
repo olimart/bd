@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+	require 'csv'
 	require 'amazon/ecs'
 
   # SEARCH
@@ -70,32 +71,28 @@ class Book < ApplicationRecord
     end
   end
 
-  def self.import(file)
-    # csv_file = file.read
-    # CSV.parse(csv_file) do |row|
-    #    book = Book.create(row.to_hash)
-    #    book.save
-    # end
-    csv_file = file.read
-    csv = CSV.parse(csv_file, headers: true)
-    csv.each do |row|
-      Book.create!(
-        title: row[1],
-        tome: row[2]
-      )
-    end
-    # CSV.foreach(file.path, headers: true) do |row|
-    #   book = find_by_id(row["id"]) || new
-    #   book.attributes = row.to_hash.symbolize_keys #.slice(*accessible_attributes)
-    #   book.save!
-    # end
-    # CSV.foreach(file.path, headers: true) do |row|
-    #   record = Book.where(
-    #     :category_id => category_id,
-    #     :name => row[0]
-    #   ).first_or_create
-    # end
-  end
+	def self.to_csv
+		books = all.order("created_at DESC")
+		headers = %w[title tome serie read author editor isbn release_date cover_url created_at]
+
+		CSV.generate do |csv|
+		  csv << column_names
+		  books.each do |b|
+				csv << [
+			    b.title,
+			    b.tome,
+			    b.serie.name,
+			    b.read,
+			    b.author,
+			    b.editor,
+			    b.isbn,
+			    b.release_date,
+			    b.cover_url,
+			    b.created_at
+			  ]
+		  end
+		end
+	end
 
   private
 

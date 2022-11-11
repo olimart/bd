@@ -3,6 +3,7 @@ Bd::Application.routes.draw do
     collection do
       get  :start_import
       post :import
+      get  :export
     end
     member do
       post :update_reading_status
